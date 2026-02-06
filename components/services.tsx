@@ -85,8 +85,8 @@ export function Services() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               <div className="relative h-64 lg:h-auto">
                 <img 
-                  src="https://placehold.co/800x600?text=Professional+chauffeur+in+elegant+black+suit+and+cap+standing+next+to+luxury+limousine+with+confident+posture"
-                  alt="Professional chauffeur in elegant black suit and cap standing next to luxury limousine with confident posture"
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop&q=80"
+                  alt="Professional chauffeur"
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent to-card lg:to-transparent" />
