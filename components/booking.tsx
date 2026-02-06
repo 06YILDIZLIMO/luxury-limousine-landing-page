@@ -208,10 +208,12 @@ export function Booking() {
                       className="w-full px-3 py-2 bg-background border border-border rounded-md focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold text-foreground"
                     >
                       <option value="">{'Select a vehicle'}</option>
-                      <option value="executive-sedan">{'Executive Sedan (1-3 passengers)'}</option>
-                      <option value="stretch-limo">{'Stretch Limousine (4-8 passengers)'}</option>
-                      <option value="suv-limo">{'SUV Limousine (8-14 passengers)'}</option>
-                      <option value="presidential">{'Presidential Suite (1-6 passengers)'}</option>
+                      <option value="suburban-2025">{'Chevrolet Suburban 2025 Premier (Up to 6 passengers)'}</option>
+                      <option value="volvo-xc90">{'Volvo XC90 Excellence (Up to 6 passengers)'}</option>
+                      <option value="escalade-esv">{'Cadillac Escalade ESV (Up to 7 passengers)'}</option>
+                      <option value="navigator-l">{'Lincoln Navigator L (Up to 7 passengers)'}</option>
+                      <option value="mercedes-s-class">{'Mercedes-Benz S-Class (Up to 4 passengers)'}</option>
+                      <option value="bmw-7-series">{'BMW 7 Series (Up to 4 passengers)'}</option>
                     </select>
                   </div>
 
