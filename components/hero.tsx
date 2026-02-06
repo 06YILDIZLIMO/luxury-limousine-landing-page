@@ -33,14 +33,16 @@ export function Hero() {
           </div>
 
           {/* Headline */}
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold mb-6 text-balance">
-            {'Arrive in '}
-            <span className="text-gold">{'Elegance'}</span>
+          <h1 className="text-6xl md:text-8xl lg:text-9xl font-serif font-black mb-8 leading-none">
+            Arrive in{' '}
+            <span className="luxury-gradient">Elegance</span>
           </h1>
 
           {/* Subheadline */}
-          <p className="text-lg md:text-xl text-foreground/80 mb-12 max-w-2xl mx-auto leading-relaxed">
-            {'Experience unparalleled luxury with 06YILDIZ LIMO. Professional chauffeur services for corporate events, special occasions, and exclusive travel across Ontario.'}
+          <p className="text-xl md:text-2xl text-foreground/90 mb-12 max-w-2xl mx-auto leading-relaxed font-light">
+            Experience unparalleled luxury with{' '}
+            <span className="text-gold font-semibold">06YILDIZ LIMO</span>
+            . Professional chauffeur services for corporate events, special occasions, and exclusive travel across Ontario.
           </p>
 
           {/* CTA Buttons */}
