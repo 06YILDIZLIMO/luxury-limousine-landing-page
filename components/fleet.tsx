@@ -11,6 +11,14 @@ const fleetVehicles = [
     icon: Crown,
   },
   {
+    name: "GMC Yukon Denali",
+    description: "Premium full-size SUV combining power, luxury and sophisticated technology",
+    capacity: "Up to 7 passengers",
+    features: ["Adaptive Cruise Control", "Head-Up Display", "Premium Sound", "Luxury Seating"],
+    image: "https://images.unsplash.com/photo-1548032840-f16a3cd4d243?w=800&h=600&fit=crop&q=80",
+    icon: Crown,
+  },
+  {
     name: "Volvo XC90 Excellence",
     description: "Swedish luxury and safety combined with sophisticated elegance",
     capacity: "Up to 6 passengers",
@@ -35,8 +43,16 @@ const fleetVehicles = [
     icon: Users,
   },
   {
+    name: "Rolls-Royce Phantom",
+    description: "The pinnacle of automotive luxury - unmatched elegance and prestige",
+    capacity: "Up to 4 passengers",
+    features: ["Starlight Headliner", "Lamb's Wool Carpets", "Bespoke Audio", "Magic Carpet Ride"],
+    image: "https://images.unsplash.com/photo-1631295868223-63265b40d9e4?w=800&h=600&fit=crop&q=80",
+    icon: Crown,
+  },
+  {
     name: "Mercedes-Benz S-Class",
-    description: "The pinnacle of automotive luxury and executive transportation",
+    description: "The benchmark of automotive luxury and executive transportation",
     capacity: "Up to 4 passengers",
     features: ["Executive Rear Seats", "Burmester Sound", "Air Balance", "Magic Body Control"],
     image: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=800&h=600&fit=crop&q=80",
@@ -49,6 +65,14 @@ const fleetVehicles = [
     features: ["Executive Lounge Seating", "Gesture Control", "Laser Lights", "Sky Lounge Roof"],
     image: "https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&h=600&fit=crop&q=80",
     icon: Briefcase,
+  },
+  {
+    name: "Luxury Party Bus",
+    description: "Ultimate group transportation for celebrations and special events",
+    capacity: "Up to 20 passengers",
+    features: ["LED Light Show", "Premium Bar", "Dance Floor", "State-of-the-Art Sound System"],
+    image: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&h=600&fit=crop&q=80",
+    icon: Users,
   },
 ]
 
