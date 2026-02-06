@@ -16,11 +16,11 @@ export function Hero() {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="https://placehold.co/1920x1080?text=Luxury+black+limousine+on+illuminated+city+street+at+night+with+golden+ambient+lighting+and+premium+atmosphere" 
-          alt="Luxury black limousine on illuminated city street at night with golden ambient lighting and premium atmosphere"
+          src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=1920&h=1080&fit=crop&q=80" 
+          alt="Luxury black limousine on illuminated city street at night"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/70 to-background" />
       </div>
 
       {/* Content */}
