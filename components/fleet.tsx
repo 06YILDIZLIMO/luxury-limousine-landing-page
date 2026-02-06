@@ -78,56 +78,55 @@ const fleetVehicles = [
 
 export function Fleet() {
   return (
-    <section id="fleet" className="py-24 bg-background relative overflow-hidden">
+    <section id="fleet" className="py-32 bg-background relative overflow-hidden">
       {/* Decorative Elements */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl" />
+      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gold/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 left-0 w-[800px] h-[800px] bg-gold/5 rounded-full blur-3xl" />
       
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-4 relative z-10 max-w-7xl">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-block px-4 py-1 rounded-full border border-gold/30 bg-gold/10 mb-4">
-            <span className="text-sm text-gold font-medium">{'Our Collection'}</span>
+        <div className="text-center max-w-4xl mx-auto mb-20">
+          <div className="inline-block px-6 py-2 rounded-full border border-gold/30 bg-gold/10 mb-6">
+            <span className="text-sm text-gold font-semibold tracking-wide uppercase">Our Collection</span>
           </div>
-          <h2 className="text-4xl md:text-6xl font-serif font-bold mb-6 text-balance">
-            {'Premium '}
-            <span className="text-gold">{'Fleet'}</span>
+          <h2 className="text-5xl md:text-7xl font-serif font-black mb-8 leading-tight">
+            Premium <span className="luxury-gradient">Fleet</span>
           </h2>
-          <p className="text-lg text-foreground/70 leading-relaxed">
-            {'Choose from our meticulously maintained fleet of luxury vehicles, each equipped with premium amenities to ensure your comfort and satisfaction.'}
+          <p className="text-xl text-foreground/80 leading-relaxed font-light">
+            Choose from our meticulously maintained fleet of luxury vehicles, each equipped with premium amenities to ensure your comfort and satisfaction.
           </p>
         </div>
 
         {/* Fleet Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {fleetVehicles.map((vehicle, index) => {
             const Icon = vehicle.icon
             return (
-              <Card key={index} className="group bg-card border-border hover:border-gold/50 transition-all duration-300 overflow-hidden">
-                <div className="relative h-64 overflow-hidden">
+              <Card key={index} className="group bg-card/50 backdrop-blur-sm border-border/50 hover:border-gold/50 transition-all duration-500 overflow-hidden hover:shadow-2xl hover:shadow-gold/10 hover:-translate-y-2">
+                <div className="relative h-72 overflow-hidden">
                   <img 
                     src={vehicle.image || "/placeholder.svg"}
                     alt={vehicle.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-card via-card/50 to-transparent" />
-                  <div className="absolute top-4 right-4 w-12 h-12 bg-gold rounded-full flex items-center justify-center">
-                    <Icon className="w-6 h-6 text-background" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-card via-card/60 to-transparent" />
+                  <div className="absolute top-6 right-6 w-14 h-14 bg-gold rounded-full flex items-center justify-center shadow-lg">
+                    <Icon className="w-7 h-7 text-background" />
                   </div>
                 </div>
-                <CardContent className="p-6">
-                  <h3 className="text-2xl font-serif font-bold mb-2">{vehicle.name}</h3>
-                  <p className="text-foreground/70 mb-4">{vehicle.description}</p>
-                  <div className="flex items-center gap-2 text-sm text-gold mb-4">
-                    <Users className="w-4 h-4" />
+                <CardContent className="p-8">
+                  <h3 className="text-2xl font-serif font-bold mb-3 group-hover:text-gold transition-colors">{vehicle.name}</h3>
+                  <p className="text-foreground/70 mb-5 leading-relaxed">{vehicle.description}</p>
+                  <div className="flex items-center gap-2 text-sm text-gold mb-6 font-medium">
+                    <Users className="w-5 h-5" />
                     <span>{vehicle.capacity}</span>
                   </div>
-                  <div className="space-y-2">
-                    <p className="text-sm font-semibold text-foreground/90">{'Features:'}</p>
-                    <div className="grid grid-cols-2 gap-2">
+                  <div className="space-y-3">
+                    <p className="text-sm font-semibold text-foreground/90 uppercase tracking-wide">Features</p>
+                    <div className="grid grid-cols-1 gap-3">
                       {vehicle.features.map((feature, i) => (
-                        <div key={i} className="flex items-center gap-2 text-sm text-foreground/70">
-                          <div className="w-1.5 h-1.5 bg-gold rounded-full" />
+                        <div key={i} className="flex items-center gap-3 text-sm text-foreground/80">
+                          <div className="w-2 h-2 bg-gold rounded-full" />
                           <span>{feature}</span>
                         </div>
                       ))}
