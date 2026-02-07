@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 export function Hero() {
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
-      {/* YENİ ARKA PLAN RESMİ */}
+      {/* Arka Plan Resmi */}
       <div 
         className="absolute inset-0 z-0"
         style={{
@@ -23,9 +23,9 @@ export function Hero() {
           <span className="text-sm font-semibold tracking-wider uppercase">Peterborough & Ontario's Finest</span>
         </div>
 
-        {/* YENİ LOGO */}
-        <div className="flex justify-center mb-8">
-          <img src="/06yildiz-limo-logo.png" alt="06YILDIZ LIMO Logo" className="h-24 md:h-32" />
+        {/* LOGO BURADA (Boyutu h-16 ve md:h-24 yaptık, çok daha kibar oldu) */}
+        <div className="flex justify-center mb-6">
+          <img src="/06yildiz-limo-logo.png" alt="06YILDIZ LIMO Logo" className="h-16 md:h-24" />
         </div>
 
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-black text-white mb-6 tracking-tight leading-tight">
