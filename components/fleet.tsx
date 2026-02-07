@@ -91,4 +91,29 @@ export function Fleet() {
                   </div>
                 </div>
                 <CardContent className="p-8">
-                  <h3 className="text-2xl font-serif font-bold mb-3
+                  <h3 className="text-2xl font-serif font-bold mb-3 group-hover:text-gold transition-colors">{vehicle.name}</h3>
+                  <p className="text-foreground/70 mb-5 leading-relaxed">{vehicle.description}</p>
+                  <div className="flex items-center gap-2 text-sm text-gold mb-6 font-medium">
+                    <Users className="w-5 h-5" />
+                    <span>{vehicle.capacity}</span>
+                  </div>
+                  <div className="space-y-3">
+                    <p className="text-sm font-semibold text-foreground/90 uppercase tracking-wide">Features</p>
+                    <div className="grid grid-cols-1 gap-3">
+                      {vehicle.features.map((feature, i) => (
+                        <div key={i} className="flex items-center gap-3 text-sm text-foreground/80">
+                          <div className="w-2 h-2 bg-gold rounded-full" />
+                          <span>{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            )
+          })}
+        </div>
+      </div>
+    </section>
+  )
+}
