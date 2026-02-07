@@ -7,7 +7,7 @@ const fleetVehicles = [
     description: "Iconic American luxury SUV with extended space and commanding presence",
     capacity: "Up to 7 passengers",
     features: ["Executive Black Leather", "AKG Studio Audio", "Super Cruise", "Rear Entertainment"],
-    image: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=800&h=600&fit=crop&q=80",
+    image: "/Gemini_Generated_Image_ayra0wayra0wayra.png"",
     icon: Crown,
   },
   {
