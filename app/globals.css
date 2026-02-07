@@ -2,36 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  :root {
-    --background: 0 0% 0%;
-    --foreground: 0 0% 100%;
-    --card: 0 0% 3%;
-    --card-foreground: 0 0% 100%;
-    --primary: 45 100% 50%;
-    --primary-foreground: 0 0% 0%;
-    --secondary: 0 0% 10%;
-    --secondary-foreground: 0 0% 100%;
-    --muted: 0 0% 10%;
-    --muted-foreground: 0 0% 60%;
-    --accent: 0 0% 10%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 0 0% 20%;
-    --input: 0 0% 20%;
-    --ring: 45 100% 50%;
-  }
+:root {
+  --background: 0 0% 0%;
+  --foreground: 0 0% 100%;
+  --gold-start: #BF953F;
+  --gold-mid: #FCF6BA;
+  --gold-end: #B38728;
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-  .luxury-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#BF953F] via-[#FCF6BA] to-[#B38728];
-  }
+body {
+  background-color: black;
+  color: white;
+}
+
+.luxury-gradient {
+  background: linear-gradient(to right, var(--gold-start), var(--gold-mid), var(--gold-end));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Kartlar ve diğer elementler için basit ayarlar */
+.bg-card {
+  background-color: rgba(10, 10, 10, 0.8);
+}
+
+.text-gold {
+  color: var(--gold-start);
+}
+
+.border-gold {
+  border-color: var(--gold-start);
 }
