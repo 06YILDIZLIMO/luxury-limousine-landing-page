@@ -1,20 +1,19 @@
 import Link from "next/link"
-import { ArrowRight, Star, Shield, Clock } from "lucide-react"
+import { ArrowRight, Star } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export function Hero() {
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
-      {/* ARKA PLAN RESMİ BURADA TANIMLANIYOR */}
+      {/* YENİ ARKA PLAN RESMİ */}
       <div 
         className="absolute inset-0 z-0"
         style={{
-          backgroundImage: 'url("/rolls.png")', /* SENİN YÜKLEDİĞİN RESİM */
+          backgroundImage: 'url("/hero-limo.png")',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
       >
-        {/* Karartma Katmanı (Yazılar okunsun diye) */}
         <div className="absolute inset-0 bg-black/70" />
       </div>
 
@@ -24,17 +23,23 @@ export function Hero() {
           <span className="text-sm font-semibold tracking-wider uppercase">Peterborough & Ontario's Finest</span>
         </div>
 
+        {/* YENİ LOGO */}
+        <div className="flex justify-center mb-8">
+          <img src="/06yildiz-limo-logo.png" alt="06YILDIZ LIMO Logo" className="h-24 md:h-32" />
+        </div>
+
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-black text-white mb-6 tracking-tight leading-tight">
           06YILDIZ <span className="luxury-gradient">LIMO</span>
         </h1>
 
         <p className="text-xl md:text-2xl text-gray-200 mb-10 max-w-3xl mx-auto font-light leading-relaxed">
-          Experience world-class luxury transportation.
+          Experience world-class luxury transportation. Whether it's a corporate event, wedding, or airport transfer, we define elegance in motion.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
           <Button size="lg" className="bg-[#BF953F] hover:bg-[#B38728] text-black font-bold text-lg px-8 py-6 rounded-full transition-transform hover:scale-105">
             Book Now
+            <ArrowRight className="ml-2 w-5 h-5" />
           </Button>
         </div>
       </div>
