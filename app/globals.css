@@ -5,9 +5,6 @@
 :root {
   --background: 0 0% 0%;
   --foreground: 0 0% 100%;
-  --gold-start: #BF953F;
-  --gold-mid: #FCF6BA;
-  --gold-end: #B38728;
 }
 
 body {
@@ -15,22 +12,10 @@ body {
   color: white;
 }
 
+/* Basit ve hatasız stil ayarları */
 .luxury-gradient {
-  background: linear-gradient(to right, var(--gold-start), var(--gold-mid), var(--gold-end));
+  background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-}
-
-/* Kartlar ve diğer elementler için basit ayarlar */
-.bg-card {
-  background-color: rgba(10, 10, 10, 0.8);
-}
-
-.text-gold {
-  color: var(--gold-start);
-}
-
-.border-gold {
-  border-color: var(--gold-start);
 }
