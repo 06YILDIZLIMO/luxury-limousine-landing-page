@@ -7,7 +7,7 @@ const fleetVehicles = [
     description: "Iconic American luxury SUV with extended space and commanding presence",
     capacity: "Up to 7 passengers",
     features: ["Executive Black Leather", "AKG Studio Audio", "Super Cruise", "Rear Entertainment"],
-    image: "/Cadillac escalade_Generated_Image_ayra0wayra0wayra.jpg",
+    image: "/escalade.png",
     icon: Crown,
   },
   {
@@ -15,7 +15,7 @@ const fleetVehicles = [
     description: "Premium full-size black SUV combining power and sophisticated luxury",
     capacity: "Up to 7 passengers",
     features: ["Adaptive Cruise Control", "Head-Up Display", "Premium Sound", "Luxury Seating"],
-    image: "/GmcYUkon_Generated_Image_2g78gb2g78gb2g78.jpg",
+    image: "/yukon.png",
     icon: Crown,
   },
   {
@@ -23,7 +23,7 @@ const fleetVehicles = [
     description: "Sophisticated American luxury with spacious black exterior and modern technology",
     capacity: "Up to 7 passengers",
     features: ["Perfect Position Seats", "Revel Audio", "Panoramic Vista Roof", "WiFi Hotspot"],
-    image: "/Lincoln navigator_Generated_Image_8p84hf8p84hf8p84.jpg",
+    image: "/lincoln.png",
     icon: Crown,
   },
   {
@@ -31,7 +31,7 @@ const fleetVehicles = [
     description: "The pinnacle of automotive luxury in classic black elegance",
     capacity: "Up to 4 passengers",
     features: ["Executive Rear Seats", "Burmester Sound", "Air Balance", "Magic Body Control"],
-    image: "/Sclass_Generated_Image_ynexf7ynexf7ynex.jpg",
+    image: "/mercedes.png",
     icon: Crown,
   },
   {
@@ -39,7 +39,7 @@ const fleetVehicles = [
     description: "German engineering excellence in sleek black with executive comfort",
     capacity: "Up to 4 passengers",
     features: ["Executive Lounge Seating", "Gesture Control", "Laser Lights", "Sky Lounge Roof"],
-    image: "/Bmw750_Generated_Image_jv5oa9jv5oa9jv5o.jpg",
+    image: "/bmw.png",
     icon: Briefcase,
   },
   {
@@ -47,7 +47,7 @@ const fleetVehicles = [
     description: "The ultimate expression of luxury - unmatched elegance in timeless black",
     capacity: "Up to 4 passengers",
     features: ["Starlight Headliner", "Lamb's Wool Carpets", "Bespoke Audio", "Magic Carpet Ride"],
-    image: "/Rollyce Royce_Generated_Image_jx7kgajx7kgajx7k.jpg",
+    image: "/rolls.png",
     icon: Crown,
   },
 ]
@@ -91,29 +91,4 @@ export function Fleet() {
                   </div>
                 </div>
                 <CardContent className="p-8">
-                  <h3 className="text-2xl font-serif font-bold mb-3 group-hover:text-gold transition-colors">{vehicle.name}</h3>
-                  <p className="text-foreground/70 mb-5 leading-relaxed">{vehicle.description}</p>
-                  <div className="flex items-center gap-2 text-sm text-gold mb-6 font-medium">
-                    <Users className="w-5 h-5" />
-                    <span>{vehicle.capacity}</span>
-                  </div>
-                  <div className="space-y-3">
-                    <p className="text-sm font-semibold text-foreground/90 uppercase tracking-wide">Features</p>
-                    <div className="grid grid-cols-1 gap-3">
-                      {vehicle.features.map((feature, i) => (
-                        <div key={i} className="flex items-center gap-3 text-sm text-foreground/80">
-                          <div className="w-2 h-2 bg-gold rounded-full" />
-                          <span>{feature}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            )
-          })}
-        </div>
-      </div>
-    </section>
-  )
-}
+                  <h3 className="text-2xl font-serif font-bold mb-3
