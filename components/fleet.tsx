@@ -1,5 +1,5 @@
+import { Crown, Briefcase, Users, Sparkles } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
-import { Users, Briefcase, Sparkles, Crown } from "lucide-react"
 
 const fleetVehicles = [
   {
