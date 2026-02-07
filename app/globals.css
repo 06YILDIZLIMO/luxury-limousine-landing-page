@@ -35,5 +35,3 @@
     @apply bg-clip-text text-transparent bg-gradient-to-r from-[#BF953F] via-[#FCF6BA] to-[#B38728];
   }
 }
-  background-clip: text;
-}
