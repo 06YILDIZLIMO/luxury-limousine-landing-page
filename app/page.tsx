@@ -4,12 +4,12 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-black text-white">
       
-      {/* --- NAVBAR --- */}
+      {/* --- ÜST MENÜ (NAVBAR) --- */}
       <nav className="fixed top-0 w-full z-50 bg-black/90 border-b border-white/10 backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             
-            {/* LOGO: Standart img etiketi kullanıyoruz, hata vermez */}
+            {/* LOGO: Buraya dikkat, düz img etiketi kullanıyoruz */}
             <div className="flex-shrink-0 cursor-pointer">
               <Link href="/">
                 <img 
@@ -20,7 +20,7 @@ export default function Home() {
               </Link>
             </div>
 
-            {/* MENÜ */}
+            {/* MENÜ LİNKLERİ */}
             <div className="hidden md:flex items-center space-x-8">
               <Link href="#" className="text-sm font-medium text-gray-300 hover:text-yellow-500 transition">HOME</Link>
               <Link href="#" className="text-sm font-medium text-gray-300 hover:text-yellow-500 transition">FLEET</Link>
@@ -32,7 +32,7 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* --- HERO BÖLÜMÜ --- */}
+      {/* --- GİRİŞ EKRANI (HERO) --- */}
       <section className="relative h-screen flex items-center justify-center pt-20">
         <div className="text-center space-y-6 px-4">
             <h1 className="text-4xl md:text-6xl font-serif text-yellow-500 tracking-wider">
@@ -44,7 +44,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* --- FLEET (ARAÇ) BÖLÜMÜ --- */}
+      {/* --- FİLO KISMI (Burada resim solda, yazı sağda olacak) --- */}
       <section className="py-24 bg-zinc-950">
         <div className="max-w-6xl mx-auto px-4">
           
@@ -56,7 +56,7 @@ export default function Home() {
           <div className="bg-zinc-900 rounded-2xl overflow-hidden border border-zinc-800 hover:border-yellow-600/50 transition-all duration-300 shadow-2xl">
             <div className="flex flex-col md:flex-row">
               
-              {/* SOL TARAFA RESİM: Standart img etiketi */}
+              {/* SOL TARAFA RESİM: Düz img etiketi */}
               <div className="w-full md:w-5/12 h-64 md:h-auto relative">
                 <img 
                   src="/cadillac.jpg" 
