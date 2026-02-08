@@ -99,11 +99,13 @@ export function Fleet() {
 
         {/* Award Banner */}
         <div className="flex justify-center mb-12">
-          <img 
-            src="/reward.png" 
-            alt="Top 3 Luxury Transportation Award" 
-            className="h-32 md:h-40 object-contain"
-          />
+          <a href="https://threebestrated.ca/limo-service-in-peterborough-on" target="_blank" rel="noopener noreferrer" className="inline-block border-0">
+            <img 
+              src="https://threebestrated.ca/awards/limo_service-peterborough-2026-drk.svg" 
+              alt="Best Limo service in Peterborough" 
+              className="h-32 md:h-40 object-contain"
+            />
+          </a>
         </div>
 
         {/* Fleet Grid */}
