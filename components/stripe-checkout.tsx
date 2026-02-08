@@ -46,7 +46,7 @@ export function StripeCheckoutForm({ clientSecret, onSuccess, onCancel }: Checko
       </div>
 
       <Elements stripe={stripePromise} options={options}>
-        <EmbeddedCheckoutProvider options={options}>
+        <EmbeddedCheckoutProvider stripe={stripePromise} options={options}>
           <EmbeddedCheckout />
         </EmbeddedCheckoutProvider>
       </Elements>
