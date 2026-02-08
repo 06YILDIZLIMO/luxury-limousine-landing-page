@@ -12,11 +12,32 @@ export function Header() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20)
     }
+    
+    // Handle smooth scroll when page loads with hash
+    if (window.location.hash) {
+      const id = window.location.hash.slice(1)
+      setTimeout(() => {
+        const element = document.getElementById(id)
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" })
+        }
+      }, 100)
+    }
+    
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
   const scrollToSection = (id: string) => {
+    // Check if we're on homepage
+    const isHomePage = window.location.pathname === "/" || window.location.pathname === ""
+    
+    if (!isHomePage) {
+      // Navigate to homepage with hash
+      window.location.href = `/#${id}`
+      return
+    }
+    
     const element = document.getElementById(id)
     if (element) {
       element.scrollIntoView({ behavior: "smooth" })
