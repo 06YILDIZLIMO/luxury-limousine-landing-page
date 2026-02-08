@@ -85,22 +85,22 @@ export function Services() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               <div className="relative h-64 lg:h-auto">
                 <img 
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop&q=80"
-                  alt="Professional chauffeur"
+                  src="/yildizlimostart.png"
+                  alt="Luxury limousine fleet"
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent to-card lg:to-transparent" />
               </div>
               <CardContent className="p-8 lg:p-12 flex flex-col justify-center">
                 <div className="inline-block px-4 py-1 rounded-full border border-gold/30 bg-gold/10 mb-4 self-start">
-                  <span className="text-sm text-gold font-medium">{'Excellence in Service'}</span>
+                  <span className="text-sm text-gold font-medium">{'Unmatched Luxury'}</span>
                 </div>
                 <h3 className="text-3xl md:text-4xl font-serif font-bold mb-6">
-                  {'Professional '}
-                  <span className="text-gold">{'Chauffeurs'}</span>
+                  {'Premium '}
+                  <span className="text-gold">{'Experience'}</span>
                 </h3>
                 <p className="text-foreground/70 mb-6 leading-relaxed">
-                  {'Our team of experienced chauffeurs is dedicated to providing you with the highest level of service, safety, and professionalism. Each driver is carefully selected and trained to exceed your expectations.'}
+                  {'Our fleet of meticulously maintained luxury vehicles offers the ultimate in comfort, style, and sophistication. From elegant sedans to spacious SUVs, every journey is an unforgettable experience.'}
                 </p>
                 <div className="space-y-3">
                   {chauffeurFeatures.map((feature, index) => (
