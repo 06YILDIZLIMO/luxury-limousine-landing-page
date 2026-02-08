@@ -50,6 +50,30 @@ const fleetVehicles = [
     image: "/rolls.png",
     icon: Crown,
   },
+  {
+    name: "Chevrolet Suburban",
+    description: "Full-size luxury SUV with ultimate space and premium comfort for large groups",
+    capacity: "Up to 8 passengers",
+    features: ["Premium Leather", "Rear Seat Entertainment", "Magnetic Ride Control", "Bose Audio System"],
+    image: "/Suburban.png",
+    icon: Users,
+  },
+  {
+    name: "Volvo XC90",
+    description: "Scandinavian luxury SUV with advanced safety and elegant black design",
+    capacity: "Up to 7 passengers",
+    features: ["Bowers & Wilkins Audio", "Pilot Assist", "Air Suspension", "Crystal Gear Shifter"],
+    image: "/VolvoXc90.png",
+    icon: Crown,
+  },
+  {
+    name: "Luxury Mercedes Sprinter",
+    description: "Premium black passenger van for large groups with ultimate comfort",
+    capacity: "Up to 12 passengers",
+    features: ["Executive Seating", "WiFi Connectivity", "Premium Audio", "Climate Control"],
+    image: "/bus.png",
+    icon: Users,
+  },
 ]
 
 export function Fleet() {
