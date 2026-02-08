@@ -128,12 +128,15 @@ export function Footer() {
               {'© '}{currentYear}{' 06YILDIZ LIMO. All rights reserved.'}
             </p>
             <div className="flex items-center gap-6">
-              <button className="text-sm text-foreground/60 hover:text-gold transition-colors">
+              <a href="/privacy-policy" className="text-sm text-foreground/60 hover:text-gold transition-colors">
                 {'Privacy Policy'}
-              </button>
-              <button className="text-sm text-foreground/60 hover:text-gold transition-colors">
-                {'Terms of Service'}
-              </button>
+              </a>
+              <a href="/terms-conditions" className="text-sm text-foreground/60 hover:text-gold transition-colors">
+                {'Terms & Conditions'}
+              </a>
+              <a href="/cancellation-policy" className="text-sm text-foreground/60 hover:text-gold transition-colors">
+                {'Cancellation Policy'}
+              </a>
             </div>
           </div>
         </div>
