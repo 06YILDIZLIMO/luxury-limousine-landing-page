@@ -80,18 +80,17 @@ export function Contact() {
         <div className="max-w-6xl mx-auto mt-12">
           <Card className="bg-card border-gold/30 overflow-hidden">
             <div className="aspect-video bg-muted relative">
-              <img 
-                src="https://placehold.co/1200x600?text=Map+showing+Peterborough+Ontario+location+with+city+streets+and+landmarks+aerial+view"
-                alt="Map showing Peterborough Ontario location with city streets and landmarks aerial view"
-                className="w-full h-full object-cover"
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2856.5!2d-78.3!3d44.3!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d59d6f00000001%3A0x0000000000000000!2s2270%20Lynhaven%20Rd%2C%20Peterborough%2C%20ON%20K9K%201V7!5e0!3m2!1sen!2sca!4v0000000000000!5m2!1sen!2sca"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="absolute inset-0 w-full h-full"
+                title="Google Maps - 2270 Lynhaven Road, Peterborough ON"
               />
-              <div className="absolute inset-0 flex items-center justify-center bg-background/50 backdrop-blur-sm">
-                <div className="text-center">
-                  <MapPin className="w-12 h-12 text-gold mx-auto mb-3" />
-                  <p className="text-lg font-semibold">{'2270 Lynhaven Road, Peterborough'}</p>
-                  <p className="text-sm text-foreground/70">{'Ontario K9K 1V7, Canada'}</p>
-                </div>
-              </div>
             </div>
           </Card>
         </div>
