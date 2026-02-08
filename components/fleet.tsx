@@ -1,5 +1,5 @@
+import { Crown, Briefcase, Users, Sparkles } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
-import { Users, Briefcase, Sparkles, Crown } from "lucide-react"
 
 const fleetVehicles = [
   {
@@ -7,7 +7,7 @@ const fleetVehicles = [
     description: "Iconic American luxury SUV with extended space and commanding presence",
     capacity: "Up to 7 passengers",
     features: ["Executive Black Leather", "AKG Studio Audio", "Super Cruise", "Rear Entertainment"],
-    image: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=800&h=600&fit=crop&q=80",
+    image: "/escalade.png",
     icon: Crown,
   },
   {
@@ -15,7 +15,7 @@ const fleetVehicles = [
     description: "Premium full-size black SUV combining power and sophisticated luxury",
     capacity: "Up to 7 passengers",
     features: ["Adaptive Cruise Control", "Head-Up Display", "Premium Sound", "Luxury Seating"],
-    image: "https://images.unsplash.com/photo-1609521263047-f8f4355ba1c2?w=800&h=600&fit=crop&q=80",
+    image: "/yukon.png",
     icon: Crown,
   },
   {
@@ -23,56 +23,32 @@ const fleetVehicles = [
     description: "Sophisticated American luxury with spacious black exterior and modern technology",
     capacity: "Up to 7 passengers",
     features: ["Perfect Position Seats", "Revel Audio", "Panoramic Vista Roof", "WiFi Hotspot"],
-    image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=800&h=600&fit=crop&q=80",
+    image: "/lincoln.png",
     icon: Crown,
-  },
-  {
-    name: "Chevrolet Suburban Premier",
-    description: "The ultimate black luxury SUV with commanding presence and premium comfort",
-    capacity: "Up to 7 passengers",
-    features: ["Premium Leather", "Panoramic Sunroof", "WiFi Hotspot", "Heated & Cooled Seats"],
-    image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=800&h=600&fit=crop&q=80",
-    icon: Crown,
-  },
-  {
-    name: "Volvo XC90 Excellence",
-    description: "Swedish luxury and safety in elegant black with sophisticated design",
-    capacity: "Up to 6 passengers",
-    features: ["Air Suspension", "Bowers & Wilkins Audio", "Massage Seats", "Crystal Shifter"],
-    image: "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?w=800&h=600&fit=crop&q=80",
-    icon: Sparkles,
-  },
-  {
-    name: "BMW 750Li",
-    description: "German engineering excellence in sleek black with executive comfort",
-    capacity: "Up to 4 passengers",
-    features: ["Executive Lounge Seating", "Gesture Control", "Laser Lights", "Sky Lounge Roof"],
-    image: "https://images.unsplash.com/photo-1617531653332-bd46c24f2068?w=800&h=600&fit=crop&q=80",
-    icon: Briefcase,
   },
   {
     name: "Mercedes-Benz S-Class",
     description: "The pinnacle of automotive luxury in classic black elegance",
     capacity: "Up to 4 passengers",
     features: ["Executive Rear Seats", "Burmester Sound", "Air Balance", "Magic Body Control"],
-    image: "https://images.unsplash.com/photo-1617531653520-bd8f2fdc0a6c?w=800&h=600&fit=crop&q=80",
+    image: "/mercedes.png",
     icon: Crown,
+  },
+  {
+    name: "BMW 750Li",
+    description: "German engineering excellence in sleek black with executive comfort",
+    capacity: "Up to 4 passengers",
+    features: ["Executive Lounge Seating", "Gesture Control", "Laser Lights", "Sky Lounge Roof"],
+    image: "/bmw.png",
+    icon: Briefcase,
   },
   {
     name: "Rolls-Royce Phantom",
     description: "The ultimate expression of luxury - unmatched elegance in timeless black",
     capacity: "Up to 4 passengers",
     features: ["Starlight Headliner", "Lamb's Wool Carpets", "Bespoke Audio", "Magic Carpet Ride"],
-    image: "https://images.unsplash.com/photo-1563720360172-67b8f3dce741?w=800&h=600&fit=crop&q=80",
+    image: "/rolls.png",
     icon: Crown,
-  },
-  {
-    name: "Luxury Party Bus",
-    description: "Ultimate group transportation for celebrations and special events",
-    capacity: "Up to 20 passengers",
-    features: ["LED Light Show", "Premium Bar", "Dance Floor", "State-of-the-Art Sound System"],
-    image: "https://images.unsplash.com/photo-1570125909232-eb263c188f7e?w=800&h=600&fit=crop&q=80",
-    icon: Users,
   },
 ]
 
