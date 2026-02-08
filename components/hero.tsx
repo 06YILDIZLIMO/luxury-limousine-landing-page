@@ -25,7 +25,7 @@ export function Hero() {
 
         {/* LOGO BURADA (Boyutu h-16 ve md:h-24 yaptık, çok daha kibar oldu) */}
         <div className="flex justify-center mb-6">
-          <img src="/06yildiz-limo-logo.png" alt="06YILDIZ LIMO Logo" className="h-16 md:h-24" />
+          <img src="/yildizlimo.png" alt="yildizlimo.png" className="h-16 md:h-24" />
         </div>
 
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-black text-white mb-6 tracking-tight leading-tight">
