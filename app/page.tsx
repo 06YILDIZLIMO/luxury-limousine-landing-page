@@ -1,45 +1,38 @@
-import Image from "next/image"; // <--- İŞTE BU SATIR EKSİKTİ, O YÜZDEN HATA VERDİ.
 import Link from "next/link";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-black text-white">
       
-      {/* --- NAVBAR (MENÜ & LOGO) --- */}
+      {/* --- NAVBAR --- */}
       <nav className="fixed top-0 w-full z-50 bg-black/90 border-b border-white/10 backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             
-            {/* LOGO KISMI - Artık devasa olmayacak */}
-            <div className="flex-shrink-0">
+            {/* LOGO: Standart img etiketi kullanıyoruz, hata vermez */}
+            <div className="flex-shrink-0 cursor-pointer">
               <Link href="/">
-                {/* Logo dosyanın adı "logo.png" olmalı (public klasöründe) */}
-                <Image 
+                <img 
                   src="/logo.png" 
                   alt="06YILDIZ LIMO" 
-                  width={180} 
-                  height={60} 
                   className="h-12 w-auto object-contain"
-                  priority
                 />
               </Link>
             </div>
 
-            {/* SAĞ TARAFAKİ LİNKLER */}
+            {/* MENÜ */}
             <div className="hidden md:flex items-center space-x-8">
               <Link href="#" className="text-sm font-medium text-gray-300 hover:text-yellow-500 transition">HOME</Link>
               <Link href="#" className="text-sm font-medium text-gray-300 hover:text-yellow-500 transition">FLEET</Link>
-              <Link href="#" className="text-sm font-medium text-gray-300 hover:text-yellow-500 transition">SERVICES</Link>
               <button className="bg-yellow-600 text-black px-5 py-2 rounded font-bold hover:bg-yellow-500 transition">
                 BOOK NOW
               </button>
             </div>
-
           </div>
         </div>
       </nav>
 
-      {/* --- HERO (GİRİŞ) BÖLÜMÜ --- */}
+      {/* --- HERO BÖLÜMÜ --- */}
       <section className="relative h-screen flex items-center justify-center pt-20">
         <div className="text-center space-y-6 px-4">
             <h1 className="text-4xl md:text-6xl font-serif text-yellow-500 tracking-wider">
@@ -51,7 +44,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* --- FLEET (FİLO) BÖLÜMÜ - DÜZELTİLMİŞ HALİ --- */}
+      {/* --- FLEET (ARAÇ) BÖLÜMÜ --- */}
       <section className="py-24 bg-zinc-950">
         <div className="max-w-6xl mx-auto px-4">
           
@@ -63,18 +56,16 @@ export default function Home() {
           <div className="bg-zinc-900 rounded-2xl overflow-hidden border border-zinc-800 hover:border-yellow-600/50 transition-all duration-300 shadow-2xl">
             <div className="flex flex-col md:flex-row">
               
-              {/* SOL TARAFA RESİM (%40 Genişlik) */}
-              <div className="relative w-full md:w-5/12 h-64 md:h-auto">
-                {/* Araç resmin "cadillac.jpg" adıyla public klasöründe olmalı */}
-                <Image 
+              {/* SOL TARAFA RESİM: Standart img etiketi */}
+              <div className="w-full md:w-5/12 h-64 md:h-auto relative">
+                <img 
                   src="/cadillac.jpg" 
                   alt="Cadillac Escalade" 
-                  fill
-                  className="object-cover"
+                  className="w-full h-full object-cover"
                 />
               </div>
 
-              {/* SAĞ TARAFA YAZI (%60 Genişlik) */}
+              {/* SAĞ TARAFA YAZI */}
               <div className="w-full md:w-7/12 p-8 flex flex-col justify-center">
                 <div className="flex justify-between items-start mb-4">
                     <div>
@@ -85,7 +76,7 @@ export default function Home() {
                 </div>
                 
                 <p className="text-gray-400 mb-6 text-sm">
-                  The ultimate symbol of power and luxury. Featuring massage seats, AKG sound system, and generous legroom for VIP transfers.
+                  The ultimate symbol of power and luxury. Featuring massage seats and generous legroom.
                 </p>
 
                 {/* ÖZELLİKLER */}
