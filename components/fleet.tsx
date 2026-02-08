@@ -97,6 +97,15 @@ export function Fleet() {
           </p>
         </div>
 
+        {/* Award Banner */}
+        <div className="flex justify-center mb-12">
+          <img 
+            src="/reward.png" 
+            alt="Top 3 Luxury Transportation Award" 
+            className="h-32 md:h-40 object-contain"
+          />
+        </div>
+
         {/* Fleet Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {fleetVehicles.map((vehicle, index) => {
