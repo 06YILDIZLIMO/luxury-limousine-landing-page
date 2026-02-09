@@ -1,3 +1,5 @@
+404
+This page could not be found.
 #!/usr/bin/env node
 /**
  * Test Twilio Voice API - Run locally to verify API is working
