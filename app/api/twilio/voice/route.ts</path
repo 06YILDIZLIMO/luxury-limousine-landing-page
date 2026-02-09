@@ -56,8 +56,10 @@ export async function POST(request: NextRequest) {
 }
 
 function getGreetingMessage(): string {
-  // Always use a welcoming message that works any time of day
-  return "Welcome to Yildiz Limousine! Your premium luxury transportation service. I'm your AI assistant, here to help you with reservations, pricing, and any questions. How may I assist you today?"
+  const hour = new Date().getHours()
+  if (hour < 12) return "Good morning! Welcome to Yildiz Limousine. I'm your AI assistant. How may I help you?"
+  if (hour < 17) return "Good afternoon! Welcome to Yildiz Limousine. How can I assist you today?"
+  return "Good evening! Thank you for calling Yildiz Limousine. How may I help you?"
 }
 
 function generateAIResponse(input: string): string {
