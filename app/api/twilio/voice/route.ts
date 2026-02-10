@@ -28,10 +28,12 @@ export async function POST(request: NextRequest) {
     // Check for "agent" or "representative" to transfer call
     if (speechResult && /agent|representative|operator|human|real person|speak to someone/i.test(speechResult)) {
       console.log(`Transferring call ${callSid} to ${AI_PHONE_NUMBER}`);
-      // @ts-ignore - Twilio types mismatch
+      // @ts-ignore - Twilio types mismatch for statusCallback
       twiml.dial({
         callerId: AI_PHONE_NUMBER,
         record: 'record-from-ringing-dual',
+        statusCallback: '/api/twilio/status',
+        statusCallbackEvent: ['initiated', 'ringing', 'answered', 'completed'],
       }, AI_PHONE_NUMBER);
       
       return new NextResponse(twiml.toString(), {
