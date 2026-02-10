@@ -20,6 +20,9 @@ export const metadata: Metadata = {
   title: '06YILDIZ LIMO - Luxury Limousine Services in Ontario, Canada',
   description: 'Premium chauffeur-driven limousine services for corporate events, special occasions, and airport transfers in Peterborough and across Ontario.',
   keywords: 'limousine service, luxury transportation, chauffeur service, Peterborough, Ontario, Canada, corporate events, wedding limo, airport transfer',
+  verification: {
+    google: "fJL3__QsjMej_U0sJZ-CPuIDfJgYNyDcKmVlVAb9Rtk",
+  },
 }
 
 export default function RootLayout({
