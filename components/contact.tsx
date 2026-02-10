@@ -87,6 +87,8 @@ export function Contact() {
             </div>
           </Card>
         </div>
+      </div>
     </section>
   )
 }
+

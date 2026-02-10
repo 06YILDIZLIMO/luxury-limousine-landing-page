@@ -1,3 +1,5 @@
+"use client"
+
 import { Crown, Briefcase, Users, Sparkles, X } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
