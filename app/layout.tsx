@@ -23,6 +23,10 @@ export const metadata: Metadata = {
   verification: {
     google: "fJL3__QsjMej_U0sJZ-CPuIDfJgYNyDcKmVlVAb9Rtk",
   },
+  icons: {
+    icon: '/yildizlimo.png',
+    apple: '/yildizlimo.png',
+  },
 }
 
 export default function RootLayout({
