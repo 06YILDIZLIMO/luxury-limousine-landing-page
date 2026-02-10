@@ -1,5 +1,7 @@
 
 
+"use client"
+
 import { useEffect, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { CheckCircle, Calendar, MapPin, Clock, Car, Phone, Mail } from 'lucide-react'
