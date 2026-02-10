@@ -1,99 +1,92 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server';
+import twilio from 'twilio';
+import { getOrCreateSession, addMessage, getConversationHistory } from '@/lib/conversation';
+import { getAIResponse } from '@/lib/openai';
 
-const TWILIO_ACCOUNT_SID = process.env.TWILIO_ACCOUNT_SID
-const TWILIO_AUTH_TOKEN = process.env.TWILIO_AUTH_TOKEN
-const TWILIO_PHONE_NUMBER = process.env.TWILIO_PHONE_NUMBER
+const VoiceResponse = twilio.twiml.VoiceResponse;
 
 export async function POST(request: NextRequest) {
   try {
-    const formData = await request.formData()
-    const from = formData.get('From') as string
-    const to = formData.get('To') as string
-    const speechResult = formData.get('SpeechResult') as string
-    const digits = formData.get('Digits') as string
+    const formData = await request.formData();
+    const callSid = formData.get('CallSid') as string;
+    const fromNumber = formData.get('From') as string;
+    const speechResult = formData.get('SpeechResult') as string;
+    const Digits = formData.get('Digits') as string;
 
-    console.log(`Voice API - From: ${from}, To: ${to}`)
-    console.log(`Speech: ${speechResult}, Digits: ${digits}`)
+    console.log(`Voice webhook received - CallSid: ${callSid}, From: ${fromNumber}`);
 
-    // Generate AI response message
-    let aiMessage: string
+    // Get or create conversation session
+    const session = getOrCreateSession(callSid, fromNumber);
 
-    if (!from) {
-      // Initial call - greeting
-      aiMessage = getGreetingMessage()
-    } else if (speechResult || digits) {
-      // User input - generate contextual response
-      aiMessage = generateAIResponse(speechResult || digits)
+    // Get conversation history
+    const history = getConversationHistory(callSid);
+
+    // Initialize response
+    const twiml = new VoiceResponse();
+    
+    // Start gathering input with longer timeout for better speech recognition
+    const gather = twiml.gather({
+      input: 'speech dtmf',
+      timeout: 5,
+      speechTimeout: 'auto',
+      action: '/api/twilio/voice',
+      method: 'POST',
+      enhanced: true,
+    });
+
+    // Get AI response
+    let aiResponse: string;
+
+    if (history.length === 0) {
+      // First interaction - greeting
+      aiResponse = `Welcome to Yildiz Limousine, your premium luxury transportation service! I'm your AI assistant, here to help you with reservations, pricing, and any questions. You can say booking for reservations, prices for pricing information, fleet for our luxury vehicles, availability for current availability, or agent to speak with a live representative. How may I assist you today?`;
+    } else if (speechResult) {
+      // User spoke something
+      addMessage(callSid, 'user', speechResult);
+      const updatedHistory = getConversationHistory(callSid);
+      aiResponse = await getAIResponse(updatedHistory);
+      addMessage(callSid, 'assistant', aiResponse);
+    } else if (Digits) {
+      // User pressed digits
+      const digitResponse = `You pressed ${Digits}`;
+      addMessage(callSid, 'user', digitResponse);
+      const updatedHistory = getConversationHistory(callSid);
+      aiResponse = await getAIResponse(updatedHistory);
+      addMessage(callSid, 'assistant', aiResponse);
     } else {
-      // No input received
-      aiMessage = "I didn't catch that. Could you please repeat?"
+      // No input, ask again with helpful suggestions
+      aiResponse = `I'm sorry, I didn't catch that. Please say booking for reservations, prices for pricing information, fleet for our luxury vehicles, availability, or agent to speak with a live representative.`;
     }
 
-    // Generate TwiML with AI voice (NO transfer - AI handles everything)
-    const twiml = `<?xml version="1.0" encoding="UTF-8"?>
-<Response>
-  <Say voice="Polly.Joanna" language="en-US" rate="1.0">
-    ${aiMessage}
-  </Say>
-  <Gather input="dtmf speech" timeout="5" speechTimeout="auto" numDigits="1">
-    <Say voice="Polly.Joanna" language="en-US">
-      Say booking, pricing, fleet, or agent for help.
-    </Say>
-  </Gather>
-</Response>`
+    // Set voice properties
+    gather.say({
+      voice: 'Polly.Joanna-Neural',
+    }, aiResponse);
 
-    return new NextResponse(twiml, {
-      headers: { 'Content-Type': 'text/xml' },
-    })
+    // If no speech input, redirect back for more input
+    twiml.redirect({
+      method: 'POST',
+    }, '/api/twilio/voice');
+
+    return new NextResponse(twiml.toString(), {
+      headers: {
+        'Content-Type': 'text/xml',
+      },
+    });
+
   } catch (error) {
-    console.error('Voice API error:', error)
-    const errorTwiml = `<?xml version="1.0" encoding="UTF-8"?>
-<Response>
-  <Say voice="Polly.Joanna">I apologize, please try again later.</Say>
-</Response>`
-    return new NextResponse(errorTwiml, { headers: { 'Content-Type': 'text/xml' } })
+    console.error('Voice API Error:', error);
+    
+    const twiml = new VoiceResponse();
+    twiml.say({
+      voice: 'Polly.Joanna-Neural',
+    }, "I'm sorry, we're experiencing technical difficulties. Please try again later or leave a message.");
+    
+    return new NextResponse(twiml.toString(), {
+      headers: {
+        'Content-Type': 'text/xml',
+      },
+    });
   }
 }
 
-function getGreetingMessage(): string {
-  // Always use a welcoming message that works any time of day
-  return "Welcome to Yildiz Limousine! Your premium luxury transportation service. I'm your AI assistant, here to help you with reservations, pricing, and any questions. How may I assist you today?"
-}
-
-function generateAIResponse(input: string): string {
-  const normalizedInput = input.toLowerCase().trim()
-  
-  if (normalizedInput.includes('agent') || normalizedInput === '9') {
-    return "I understand you'd like to speak with a live agent. Please call us at +1 (705) 991-1905 for immediate assistance. Is there anything else I can help you with?"
-  }
-  
-  if (normalizedInput.includes('book') || normalizedInput === '1') {
-    return "I'd be happy to help you book. Please provide your name, date, time, pickup location, and destination. We'll confirm your reservation within 24 hours."
-  }
-  
-  if (normalizedInput.includes('price') || normalizedInput.includes('cost') || normalizedInput === '2') {
-    return "Our luxury sedans start at $75, premium SUVs from $150, and stretch limousines from $250 per hour. Would you like a detailed quote?"
-  }
-  
-  if (normalizedInput.includes('fleet') || normalizedInput.includes('vehicle') || normalizedInput === '3') {
-    return "Our fleet includes Mercedes-Benz S-Class, BMW 7 Series, Cadillac Escalade, Lincoln Navigator, and Rolls Royce Phantom. Which interests you most?"
-  }
-  
-  if (normalizedInput.includes('available') || normalizedInput.includes('when')) {
-    return "We operate 24 hours a day, 7 days a week. What date and time do you need?"
-  }
-  
-  if (normalizedInput.includes('thank') || normalizedInput.includes('bye')) {
-    return "Thank you for choosing Yildiz Limousine! Have a wonderful day. Goodbye!"
-  }
-  
-  return "I can help with booking, pricing, fleet information, or general questions. How may I assist you?"
-}
-
-export async function GET() {
-  return NextResponse.json({
-    status: 'ok',
-    message: 'Twilio Voice AI - Calls handled by AI directly',
-    mode: 'ai-voice-assistant'
-  })
-}
