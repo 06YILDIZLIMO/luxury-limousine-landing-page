@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import Image from 'next/image'
 import { Button } from "@/components/ui/button"
 import { Phone, Mail, Menu, X } from "lucide-react"
 
@@ -54,14 +55,14 @@ export function Header() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-gold flex items-center justify-center">
-              <span className="text-background font-bold text-xl">06</span>
-            </div>
-            <div>
-              <div className="text-xl font-serif font-bold text-gold leading-tight">06YILDIZ</div>
-              <div className="text-xs tracking-widest text-silver uppercase">Limousine</div>
-            </div>
+          <div className="flex items-center">
+            <Image
+              src="/yildizlimo.png"
+              alt="06YILDIZ LIMO Logo"
+              width={150}
+              height={50}
+              priority
+            />
           </div>
 
           {/* Desktop Navigation */}
