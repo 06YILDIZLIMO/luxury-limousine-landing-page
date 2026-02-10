@@ -89,7 +89,7 @@ export default function CancellationPolicy() {
             </p>
             <ul>
               <li>{'Email: 06yildizlimousine@gmail.com'}</li>
-              <li>{'Phone: +1 (705) 991-1905'}</li>
+              <li>{'Phone: +1 (709) 300-9006'}</li>
               <li>{'Online: Manage your booking through our website'}</li>
             </ul>
             <p>
@@ -147,7 +147,7 @@ export default function CancellationPolicy() {
             </p>
             <ul>
               <li>{'Email: 06yildizlimousine@gmail.com'}</li>
-              <li>{'Phone: +1 (705) 991-1905'}</li>
+              <li>{'Phone: +1 (709) 300-9006'}</li>
               <li>{'Address: 2270 Lynhaven Road, Peterborough, ON K9K 1V7, Canada'}</li>
             </ul>
           </div>

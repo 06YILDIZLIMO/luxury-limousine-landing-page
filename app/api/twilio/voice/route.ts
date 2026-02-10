@@ -56,7 +56,7 @@ export async function POST(request: NextRequest) {
 
     if (history.length === 0) {
       // First interaction - greeting
-      aiResponse = `Welcome to Yildiz Limousine, your premium luxury transportation service! I'm your AI assistant, here to help you with reservations, pricing, and any questions. You can say booking for reservations, prices for pricing information, fleet for our luxury vehicles, availability, or agent to speak with a live representative. How may I assist you today?`;
+      aiResponse = `Welcome to 06YILDIZ Limo, Peterborough's premium airport transfer service. To give you the best flat rate, could you please tell me your pickup location and destination?`;
     } else if (speechResult) {
       // User spoke something
       addMessage(callSid, 'user', speechResult);

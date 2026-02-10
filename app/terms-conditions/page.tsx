@@ -128,7 +128,7 @@ export default function TermsConditions() {
             </p>
             <ul>
               <li>{'Email: 06yildizlimousine@gmail.com'}</li>
-              <li>{'Phone: +1 (705) 991-1905'}</li>
+              <li>{'Phone: +1 (709) 300-9006'}</li>
               <li>{'Address: 2270 Lynhaven Road, Peterborough, ON K9K 1V7, Canada'}</li>
             </ul>
           </div>

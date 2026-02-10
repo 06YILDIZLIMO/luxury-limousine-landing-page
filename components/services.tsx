@@ -5,32 +5,32 @@ const services = [
   {
     icon: Plane,
     title: "Airport Transfers",
-    description: "Reliable and punctual airport transportation with flight tracking and meet-and-greet service.",
+    description: "Reliable and punctual airport transportation with flight tracking and meet-and-greet service. We monitor your flight status and adjust pickup times accordingly. Complimentary waiting time, luggage assistance, and professional service from door to terminal.",
   },
   {
     icon: Briefcase,
     title: "Corporate Events",
-    description: "Professional chauffeur services for business meetings, conferences, and executive travel.",
+    description: "Professional chauffeur services for business meetings, conferences, and executive travel. Make a lasting impression on your clients and partners with our premium fleet. Confidential, reliable, and punctual service tailored for business professionals.",
   },
   {
     icon: Heart,
     title: "Weddings",
-    description: "Make your special day unforgettable with our elegant wedding limousine packages.",
+    description: "Make your special day unforgettable with our elegant wedding limousine packages. From the bride's exit to transporting the wedding party, we ensure every moment is picture-perfect. Custom decorations and red-carpet service available.",
   },
   {
     icon: PartyPopper,
     title: "Special Occasions",
-    description: "Celebrate birthdays, anniversaries, proms, and nights out in style and comfort.",
+    description: "Celebrate birthdays, anniversaries, proms, bachelorette parties, and nights out in style and luxury. Create unforgettable memories with premium transportation for your special moments. VIP treatment guaranteed.",
   },
   {
     icon: Building2,
     title: "City Tours",
-    description: "Explore Ontario's finest destinations with personalized guided tours in luxury.",
+    description: "Experience Toronto, Niagara Falls, Muskoka, and Peterborough like never before with our customized guided tours. Professional chauffeurs with extensive local knowledge. Luxury vehicles equipped with comfort amenities for an unforgettable journey.",
   },
   {
     icon: MapPin,
     title: "Point-to-Point",
-    description: "Direct transportation to any destination across Ontario with premium comfort.",
+    description: "Direct transportation to any destination across Ontario with premium comfort and style. Whether it's a dinner reservation, concert, or personal appointment, arrive in elegance. 24/7 availability for your convenience.",
   },
 ]
 
