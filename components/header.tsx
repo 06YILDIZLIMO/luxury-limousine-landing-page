@@ -94,7 +94,7 @@ export function Header() {
 
           {/* Contact Info & CTA */}
           <div className="hidden lg:flex items-center gap-4">
-            <a href="tel:+17059911905" className="flex items-center gap-2 text-sm text-foreground/80 hover:text-gold transition-colors">
+            <a href="tel:+17093009006" className="flex items-center gap-2 text-sm text-foreground/80 hover:text-gold transition-colors">
               <Phone className="w-4 h-4" />
               <span>{'+1 (705) 991-1905'}</span>
             </a>
@@ -145,7 +145,7 @@ export function Header() {
               </button>
               <a href="tel:+17059911905" className="flex items-center gap-2 text-gold py-2">
                 <Phone className="w-4 h-4" />
-                <span>{'+1 (705) 991-1905'}</span>
+                <span>{'+1 (709) 300-9006'}</span>
               </a>
               <a href="mailto:06yildizlimousine@gmail.com" className="flex items-center gap-2 text-gold py-2">
                 <Mail className="w-4 h-4" />
