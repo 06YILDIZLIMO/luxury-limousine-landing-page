@@ -4,14 +4,15 @@ import { getOrCreateSession, addMessage, getConversationHistory } from '@/lib/co
 import { getAIResponse } from '@/lib/openai';
 
 const VoiceResponse = twilio.twiml.VoiceResponse;
+const AI_PHONE_NUMBER = process.env.AI_PHONE_NUMBER || '+17093009006';
 
 export async function POST(request: NextRequest) {
   try {
     const formData = await request.formData();
-    const callSid = formData.get('CallSid') as string;
-    const fromNumber = formData.get('From') as string;
-    const speechResult = formData.get('SpeechResult') as string;
-    const Digits = formData.get('Digits') as string;
+    const callSid = String(formData.get('CallSid') || '');
+    const fromNumber = String(formData.get('From') || '');
+    const speechResult = String(formData.get('SpeechResult') || '');
+    const Digits = String(formData.get('Digits') || '');
 
     console.log(`Voice webhook received - CallSid: ${callSid}, From: ${fromNumber}`);
 
@@ -24,9 +25,23 @@ export async function POST(request: NextRequest) {
     // Initialize response
     const twiml = new VoiceResponse();
     
+    // Check for "agent" or "representative" to transfer call
+    if (speechResult && /agent|representative|operator|human|real person|speak to someone/i.test(speechResult)) {
+      console.log(`Transferring call ${callSid} to ${AI_PHONE_NUMBER}`);
+      // @ts-ignore - Twilio types mismatch
+      twiml.dial({
+        callerId: AI_PHONE_NUMBER,
+        record: 'record-from-ringing-dual',
+      }, AI_PHONE_NUMBER);
+      
+      return new NextResponse(twiml.toString(), {
+        headers: { 'Content-Type': 'text/xml' },
+      });
+    }
+    
     // Start gathering input with longer timeout for better speech recognition
     const gather = twiml.gather({
-      input: 'speech dtmf',
+      input: ['speech', 'dtmf'],
       timeout: 5,
       speechTimeout: 'auto',
       action: '/api/twilio/voice',
@@ -39,7 +54,7 @@ export async function POST(request: NextRequest) {
 
     if (history.length === 0) {
       // First interaction - greeting
-      aiResponse = `Welcome to Yildiz Limousine, your premium luxury transportation service! I'm your AI assistant, here to help you with reservations, pricing, and any questions. You can say booking for reservations, prices for pricing information, fleet for our luxury vehicles, availability for current availability, or agent to speak with a live representative. How may I assist you today?`;
+      aiResponse = `Welcome to Yildiz Limousine, your premium luxury transportation service! I'm your AI assistant, here to help you with reservations, pricing, and any questions. You can say booking for reservations, prices for pricing information, fleet for our luxury vehicles, availability, or agent to speak with a live representative. How may I assist you today?`;
     } else if (speechResult) {
       // User spoke something
       addMessage(callSid, 'user', speechResult);
@@ -89,4 +104,3 @@ export async function POST(request: NextRequest) {
     });
   }
 }
-

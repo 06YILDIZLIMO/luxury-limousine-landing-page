@@ -28,7 +28,11 @@ export function Contact() {
               </div>
               <h3 className="font-serif font-bold text-lg mb-2">{'Phone'}</h3>
               <a href="tel:+17093009006" className="text-gold hover:text-gold/80 transition-colors">
+<<<<<<< HEAD
                 {'+1 (709)3009006'}
+=======
+                {'+1 (709) 300-9006'}
+>>>>>>> 80ddc3b (Fix twilio input type)
               </a>
             </CardContent>
           </Card>

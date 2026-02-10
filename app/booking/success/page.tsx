@@ -1,4 +1,4 @@
-"use client"
+
 
 import { useEffect, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
@@ -122,11 +122,11 @@ export default function BookingSuccess() {
             <h3 className="text-lg font-serif font-bold mb-4">Need Help?</h3>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a 
-                href="tel:+17059911905" 
+                href="tel:+17093009006" 
                 className="flex items-center justify-center gap-2 text-foreground/80 hover:text-gold transition-colors"
               >
                 <Phone className="w-5 h-5" />
-                +1 (705) 991-1905
+                +1 (709) 300-9006
               </a>
               <a 
                 href="mailto:info@06yildizlimo.com" 

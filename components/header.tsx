@@ -96,7 +96,7 @@ export function Header() {
           <div className="hidden lg:flex items-center gap-4">
             <a href="tel:+17093009006" className="flex items-center gap-2 text-sm text-foreground/80 hover:text-gold transition-colors">
               <Phone className="w-4 h-4" />
-              <span>{'+1 (705) 991-1905'}</span>
+              <span>{'+1 (709) 300-9006'}</span>
             </a>
             <Button 
               onClick={() => scrollToSection("booking")}
@@ -143,7 +143,7 @@ export function Header() {
               >
                 {'Contact'}
               </button>
-              <a href="tel:+17059911905" className="flex items-center gap-2 text-gold py-2">
+              <a href="tel:+17093009006" className="flex items-center gap-2 text-gold py-2">
                 <Phone className="w-4 h-4" />
                 <span>{'+1 (709) 300-9006'}</span>
               </a>
