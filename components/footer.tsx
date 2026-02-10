@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link'
 import { Phone, Mail, MapPin } from "lucide-react"
 
 export function Footer() {
@@ -30,48 +31,36 @@ export function Footer() {
             <h3 className="font-serif font-bold text-lg mb-4">{'Quick Links'}</h3>
             <ul className="space-y-2">
               <li>
-                <button 
-                  onClick={() => {
-                    const element = document.getElementById("fleet")
-                    if (element) element.scrollIntoView({ behavior: "smooth" })
-                  }}
+                <Link
+                  href="/#fleet"
                   className="text-sm text-foreground/70 hover:text-gold transition-colors"
                 >
                   {'Our Fleet'}
-                </button>
+                </Link>
               </li>
               <li>
-                <button 
-                  onClick={() => {
-                    const element = document.getElementById("services")
-                    if (element) element.scrollIntoView({ behavior: "smooth" })
-                  }}
+                <Link
+                  href="/#services"
                   className="text-sm text-foreground/70 hover:text-gold transition-colors"
                 >
                   {'Services'}
-                </button>
+                </Link>
               </li>
               <li>
-                <button 
-                  onClick={() => {
-                    const element = document.getElementById("booking")
-                    if (element) element.scrollIntoView({ behavior: "smooth" })
-                  }}
+                <Link
+                  href="/booking"
                   className="text-sm text-foreground/70 hover:text-gold transition-colors"
                 >
                   {'Book Now'}
-                </button>
+                </Link>
               </li>
               <li>
-                <button 
-                  onClick={() => {
-                    const element = document.getElementById("contact")
-                    if (element) element.scrollIntoView({ behavior: "smooth" })
-                  }}
+                <Link
+                  href="/#contact"
                   className="text-sm text-foreground/70 hover:text-gold transition-colors"
                 >
                   {'Contact'}
-                </button>
+                </Link>
               </li>
             </ul>
           </div>
@@ -80,12 +69,36 @@ export function Footer() {
           <div>
             <h3 className="font-serif font-bold text-lg mb-4">{'Services'}</h3>
             <ul className="space-y-2 text-sm text-foreground/70">
-              <li>{'Airport Transfers'}</li>
-              <li>{'Corporate Events'}</li>
-              <li>{'Wedding Services'}</li>
-              <li>{'Special Occasions'}</li>
-              <li>{'City Tours'}</li>
-              <li>{'Point-to-Point'}</li>
+              <li>
+                <Link href="/#services" className="hover:text-gold transition-colors">
+                  {'Airport Transfers'}
+                </Link>
+              </li>
+              <li>
+                <Link href="/#services" className="hover:text-gold transition-colors">
+                  {'Corporate Events'}
+                </Link>
+              </li>
+              <li>
+                <Link href="/#services" className="hover:text-gold transition-colors">
+                  {'Wedding Services'}
+                </Link>
+              </li>
+              <li>
+                <Link href="/#services" className="hover:text-gold transition-colors">
+                  {'Special Occasions'}
+                </Link>
+              </li>
+              <li>
+                <Link href="/#services" className="hover:text-gold transition-colors">
+                  {'City Tours'}
+                </Link>
+              </li>
+              <li>
+                <Link href="/#services" className="hover:text-gold transition-colors">
+                  {'Point-to-Point'}
+                </Link>
+              </li>
             </ul>
           </div>
 
