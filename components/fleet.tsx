@@ -52,6 +52,14 @@ const executiveVehicles = [
     icon: Crown,
   },
   {
+    name: "GMC Yukon Denali",
+    description: "Premium full-size black SUV combining power and sophisticated luxury",
+    capacity: "Up to 7 passengers",
+    features: ["Denali Premium Interior", "Bose Premium Audio", "Magnetic Ride Control", "Wireless Charging", "Heated & Ventilated Seats", "Power Liftgate", "Advanced Safety Features", "Luxury Package"],
+    image: "/yukon.png",
+    icon: Crown,
+  },
+  {
     name: "Chevrolet Suburban Premier",
     description: "Full-size luxury SUV with ultimate space and premium comfort for large groups",
     capacity: "Up to 8 passengers",
@@ -66,6 +74,18 @@ const executiveVehicles = [
     features: ["Executive Leather Seating", "WiFi Connectivity", "Premium Audio System", "Individual Climate Control", "USB Charging Ports", "Vanity Mirrors", "Ample Luggage Space", "Privacy Partition"],
     image: "/bus.png",
     icon: Users,
+  },
+]
+
+// PREMIUM BUSINESS CLASS - Sophisticated Safety & Comfort
+const premiumBusinessVehicles = [
+  {
+    name: "Volvo XC90",
+    description: "Scandinavian luxury SUV with advanced safety and elegant black design",
+    capacity: "Up to 4 passengers + Luggage",
+    features: ["City Safety System", "Air Suspension", "Bowers & Wilkins Audio", "Panoramic Sunroof", "Massage Seats", "Pilot Assist", "360-Degree Camera", "Wireless Charging"],
+    image: "/VolvoXc90.png",
+    icon: Briefcase,
   },
 ]
 
@@ -206,13 +226,13 @@ export function Fleet() {
             {prestigeVehicles.map((vehicle, index) => {
               const Icon = vehicle.icon
               return (
-                <Card 
-                  key={index} 
+                <Card
+                  key={index}
                   className="group bg-black/40 backdrop-blur-sm border-gold/30 hover:border-gold transition-all duration-500 overflow-hidden hover:shadow-2xl hover:shadow-gold/20 hover:-translate-y-2 cursor-pointer"
                   onClick={() => setSelectedVehicle(vehicle)}
                 >
                   <div className="relative h-72 overflow-hidden">
-                    <img 
+                    <img
                       src={vehicle.image || "/placeholder.svg"}
                       alt={vehicle.name}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
@@ -235,7 +255,7 @@ export function Fleet() {
                       <Users className="w-5 h-5" />
                       <span>{vehicle.capacity}</span>
                     </div>
-                    <div className="grid grid-cols-2 gap-2">
+                    <div className="grid grid-cols-2 gap-2 mb-6">
                       {vehicle.features.slice(0, 4).map((feature, i) => (
                         <div key={i} className="flex items-center gap-2 text-xs text-foreground/60">
                           <div className="w-1.5 h-1.5 bg-gold rounded-full" />
@@ -243,6 +263,19 @@ export function Fleet() {
                         </div>
                       ))}
                     </div>
+                    <Button
+                      size="lg"
+                      className="w-full bg-gold hover:bg-gold/90 text-black font-semibold"
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        const bookingSection = document.getElementById("booking")
+                        if (bookingSection) {
+                          bookingSection.scrollIntoView({ behavior: "smooth" })
+                        }
+                      }}
+                    >
+                      Book Now
+                    </Button>
                   </CardContent>
                 </Card>
               )
@@ -264,17 +297,17 @@ export function Fleet() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
             {executiveVehicles.map((vehicle, index) => {
               const Icon = vehicle.icon
               return (
-                <Card 
-                  key={index} 
+                <Card
+                  key={index}
                   className="group bg-gradient-to-br from-slate-800 to-slate-900 border-slate-700 hover:border-gold/50 transition-all duration-500 overflow-hidden hover:shadow-2xl hover:shadow-gold/10 hover:-translate-y-2 cursor-pointer"
                   onClick={() => setSelectedVehicle(vehicle)}
                 >
                   <div className="relative h-56 overflow-hidden">
-                    <img 
+                    <img
                       src={vehicle.image || "/placeholder.svg"}
                       alt={vehicle.name}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
@@ -292,10 +325,99 @@ export function Fleet() {
                   <CardContent className="p-6">
                     <h3 className="text-xl font-serif font-bold mb-2 text-white group-hover:text-gold transition-colors">{vehicle.name}</h3>
                     <p className="text-slate-400 text-sm mb-3 line-clamp-2">{vehicle.description}</p>
-                    <div className="flex items-center gap-2 text-xs text-gold font-medium">
+                    <div className="flex items-center gap-2 text-xs text-gold font-medium mb-4">
                       <Users className="w-4 h-4" />
                       <span>{vehicle.capacity}</span>
                     </div>
+                    <Button
+                      size="sm"
+                      className="w-full bg-gold hover:bg-gold/90 text-black font-medium text-sm"
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        const bookingSection = document.getElementById("booking")
+                        if (bookingSection) {
+                          bookingSection.scrollIntoView({ behavior: "smooth" })
+                        }
+                      }}
+                    >
+                      Book Now
+                    </Button>
+                  </CardContent>
+                </Card>
+              )
+            })}
+          </div>
+        </div>
+
+        {/* THE PREMIUM BUSINESS CLASS - Sophisticated Safety & Comfort */}
+        <div className="mt-20">
+          <div className="text-center max-w-3xl mx-auto mb-10">
+            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full border border-gold/30 bg-black/50 mb-4">
+              <Briefcase className="w-5 h-5 text-gold" />
+              <span className="text-sm text-gold font-semibold tracking-wide uppercase">Premium Business Class</span>
+            </div>
+            <h3 className="text-4xl md:text-5xl font-serif font-black text-white">
+              THE PREMIUM <span className="text-gold">BUSINESS CLASS</span>
+            </h3>
+            <p className="text-lg text-foreground/60 mt-4">
+              Sophisticated safety and comfort for discerning travelers
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-8 max-w-2xl mx-auto">
+            {premiumBusinessVehicles.map((vehicle, index) => {
+              const Icon = vehicle.icon
+              return (
+                <Card
+                  key={index}
+                  className="group bg-black/40 backdrop-blur-sm border-gold/30 hover:border-gold transition-all duration-500 overflow-hidden hover:shadow-2xl hover:shadow-gold/20 hover:-translate-y-2 cursor-pointer"
+                  onClick={() => setSelectedVehicle(vehicle)}
+                >
+                  <div className="relative h-72 overflow-hidden">
+                    <img
+                      src={vehicle.image || "/placeholder.svg"}
+                      alt={vehicle.name}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
+                    <div className="absolute top-6 right-6 w-14 h-14 bg-gold rounded-full flex items-center justify-center shadow-lg">
+                      <Icon className="w-7 h-7 text-black" />
+                    </div>
+                    {/* View Details Badge */}
+                    <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <span className="text-white font-semibold px-4 py-2 border border-white/50 rounded-full">
+                        Click to View Details
+                      </span>
+                    </div>
+                  </div>
+                  <CardContent className="p-8">
+                    <h3 className="text-2xl font-serif font-bold mb-3 text-white group-hover:text-gold transition-colors">{vehicle.name}</h3>
+                    <p className="text-foreground/70 mb-5 leading-relaxed">{vehicle.description}</p>
+                    <div className="flex items-center gap-2 text-sm text-gold mb-4 font-medium">
+                      <Users className="w-5 h-5" />
+                      <span>{vehicle.capacity}</span>
+                    </div>
+                    <div className="grid grid-cols-2 gap-2 mb-6">
+                      {vehicle.features.slice(0, 4).map((feature, i) => (
+                        <div key={i} className="flex items-center gap-2 text-xs text-foreground/60">
+                          <div className="w-1.5 h-1.5 bg-gold rounded-full" />
+                          <span className="truncate">{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+                    <Button
+                      size="lg"
+                      className="w-full bg-gold hover:bg-gold/90 text-black font-semibold"
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        const bookingSection = document.getElementById("booking")
+                        if (bookingSection) {
+                          bookingSection.scrollIntoView({ behavior: "smooth" })
+                        }
+                      }}
+                    >
+                      Book Now
+                    </Button>
                   </CardContent>
                 </Card>
               )
