@@ -27,8 +27,8 @@ export function Contact() {
                 <Phone className="w-7 h-7 text-gold group-hover:text-background transition-colors" />
               </div>
               <h3 className="font-serif font-bold text-lg mb-2">{'Phone'}</h3>
-              <a href="tel:+17059911905" className="text-gold hover:text-gold/80 transition-colors">
-                {'+1 (705) 991-1905'}
+              <a href="tel:+17093009006" className="text-gold hover:text-gold/80 transition-colors">
+                {'+1 (709)3009006'}
               </a>
             </CardContent>
           </Card>
