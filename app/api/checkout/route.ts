@@ -1,9 +1,14 @@
 import { NextResponse } from 'next/server'
 import Stripe from 'stripe'
+import twilio from 'twilio'
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
   apiVersion: '2024-06-20',
 })
+
+const accountSid = process.env.TWILIO_ACCOUNT_SID;
+const authToken = process.env.TWILIO_AUTH_TOKEN;
+const client = twilio(accountSid, authToken);
 
 export async function POST(request: Request) {
   try {
@@ -51,6 +56,23 @@ export async function POST(request: Request) {
         serviceType: service,
       },
     })
+
+    // Send WhatsApp notification
+    try {
+      await client.messages.create({
+        from: 'whatsapp:+14155238886',
+        contentSid: 'HXb5b62575e6e4ff6129ad7c8efe1f983e',
+        contentVariables: JSON.stringify({
+          "1": date, // Müşterinin seçtiği tarih
+          "2": time  // Müşterinin seçtiği saat
+        }),
+        to: 'whatsapp:+16475351905'
+      });
+      console.log('WhatsApp notification sent successfully');
+    } catch (twilioError) {
+      console.error('Error sending WhatsApp notification:', twilioError);
+      // Don't fail the checkout if WhatsApp fails
+    }
 
     return NextResponse.json({ clientSecret: session.client_secret })
   } catch (error) {
