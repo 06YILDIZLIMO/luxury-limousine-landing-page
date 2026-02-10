@@ -25,7 +25,7 @@ export function Contact() {
               </div>
               <h3 className="font-serif font-bold text-lg mb-2">Phone</h3>
               <a href="tel:+17093009006" className="text-gold hover:text-gold/80 transition-colors">
-                +1 (709) 300-9006
+                +1 (705) 991-1905
               </a>
             </CardContent>
           </Card>
@@ -87,14 +87,6 @@ export function Contact() {
             </div>
           </Card>
         </div>
-    </section>
-  )
-}
-      </div>
-    </section>
-  )
-}
-      </div>
     </section>
   )
 }
