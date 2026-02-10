@@ -128,7 +128,7 @@ export default function BookingSuccess() {
                 className="flex items-center justify-center gap-2 text-foreground/80 hover:text-gold transition-colors"
               >
                 <Phone className="w-5 h-5" />
-                +1 (705) 991-1905
+                +1 (709) 300-9006
               </a>
               <a 
                 href="mailto:info@06yildizlimo.com" 
