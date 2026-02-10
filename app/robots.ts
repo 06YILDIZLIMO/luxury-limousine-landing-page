@@ -5,8 +5,8 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
+      disallow: '/private/',
     },
-    sitemap: 'https://www.06yildizlimo.com/sitemap.xml',
+    sitemap: 'https://06yildizlimo.com/sitemap.xml',
   }
 }
-
