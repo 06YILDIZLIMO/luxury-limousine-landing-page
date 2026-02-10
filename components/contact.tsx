@@ -85,4 +85,16 @@ export function Contact() {
                 title="Google Maps - 2270 Lynhaven Road, Peterborough ON"
               />
             </div>
-</
+          </Card>
+        </div>
+    </section>
+  )
+}
+      </div>
+    </section>
+  )
+}
+      </div>
+    </section>
+  )
+}
