@@ -10,6 +10,13 @@
 - [x] calculatePrice() fonksiyonu eklendi
 - [x] recommendVehicle() fonksiyonu eklendi
 
+### 2. ElevenLabs ConvAI Widget Entegrasyonu
+- [x] TypeScript type definitions eklendi (types/elevenlabs-convai.d.ts)
+- [x] layout.tsx güncellendi
+- [x] transfer_to_support özelliği eklendi (+19179435984)
+- [x] Predefined messages eklendi
+- [x] Expert Human Transfer kuralları eklendi
+
 ---
 
 ## 🚀 SON STRATEJİK FİYATLAR (CAD) - Peterborough ↔ YYZ One Way
@@ -71,7 +78,7 @@
 
 ## ✅ DURUM
 
-**Status:** ✅ CRITICAL RULES EKLENDI - TEST EDİLMELİ
+**Status:** ✅ ELEVENLABS WIDGET ENTEGRASYONU TAMAMLANDI
 
 ### 🔴 TEST CASE'LERİ (HER DEĞİŞİKLİKTEN SONRA ÇALIŞTIR!)
 
@@ -93,8 +100,6 @@ Input: "4 kişiyiz ama 5 tane büyük bavulumuz var, Sedan olur mu?"
 
 ---
 
----
-
 ## 🎯 SATIŞ ARGÜMANLARI (THE "CLOSER" SCRIPT)
 
 ### ARGUMENT 1: Gizli Ücret Saldırısı
@@ -111,21 +116,70 @@ Input: "4 kişiyiz ama 5 tane büyük bavulumuz var, Sedan olur mu?"
 
 ---
 
+## 🤖 ELEVENLABS WIDGET YAPILANDIRMASI
+
+### Widget Özellikleri:
+- **Agent ID:** `agent_0001kh8zyfnkf55a1q355vb3khzq`
+- **Position:** Sağ alt (`position="right"`)
+- **Transfer to Support:** +19179435984
+- **Otomatik Açılma:** Kapalı (`openChatOnLoad="false"`)
+- **Şeffaf Arka Plan:** Açık (`transparentBackground="true"`)
+
+### Önceden Tanımlanmış Mesajlar:
+1. "Hello! I'd like to book a limousine for airport transfer."
+2. "What vehicles do you have available?"
+3. "Can I get a quote for Peterborough to Toronto airport?"
+4. "Do you offer wedding limousine services?"
+
+### Metadata:
+- source: website
+- page: root
+- transfer_conditions: party_bus, wedding_package, angry_customer, complex_english, human_request
+- transfer_script: "I understand. I am connecting you to our operation specialist, who can assist you with all the details. Please stay on the line."
+- operation_specialist: +19179435984
+
+---
+
+## 📞 EXPERT HUMAN TRANSFER KURALLARI (C. EXPERT HUMAN TRANSFER)
+
+### ⚠️ KRİTİK KURAL:
+**Birinci destek hattı sizsiniz. Aşağıdaki durumlarda MUTLAKA transfer yapın:**
+
+### Ne Zaman Transfer Yapılmalı:
+
+| Durum | Örnek |
+|-------|-------|
+| Party Bus veya Coach Bus soruları | "How much for a 30 passenger party bus?" |
+| Düğün Paketleri | "I want a wedding package with Rolls-Royce" |
+| Sinirli müşteri | "This is unacceptable, I want to speak to a manager!" |
+| Çok karmaşık İngilizce | Müşteri anlaşılamıyor, karmaşık talep |
+| İnsan isteği | "Can I speak to a real person?" |
+
+### Transfer Script:
+> **"I understand. I am connecting you to our operation specialist, who can assist you with all the details. Please stay on the line."**
+
+### Hedef Numara:
+> **+19179435984**
+
+---
+
 ## 🚀 DEPLOYMENT KOMUTLARI
 
 ```bash
 cd luxury-limousine-landing-page
 npm run build
 git add .
-git commit -m "feat: Strategic pricing - Sedan $350, SUV $430 vs Uber Black"
+git commit -m "feat: ElevenLabs ConvAI widget with Expert Human Transfer rules"
 git push
 ```
 
 ---
 
 ### Yapılacak Sonraki Adımlar
-- [ ] Build test et
+- [x] ElevenLabs ConvAI Widget TypeScript entegrasyonu
+- [x] transfer_to_support özelliği eklendi (+19179435984)
+- [x] Expert Human Transfer kuralları eklendi
+- [x] Build test et ✅
 - [ ] Vercel'de deploy et
-- [ ] Twilio Voice webhook test
-- [ ] **Test case'leri manual test et!**
+- [ ] **Live test: Widget'ı tarayıcıda test et!**
 

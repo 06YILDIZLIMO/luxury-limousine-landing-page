@@ -6,9 +6,15 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
   apiVersion: '2024-06-20',
 })
 
-const accountSid = process.env.TWILIO_ACCOUNT_SID;
-const authToken = process.env.TWILIO_AUTH_TOKEN;
-const client = twilio(accountSid, authToken);
+// Lazy initialization of Twilio client to avoid build-time errors
+const getTwilioClient = () => {
+  const accountSid = process.env.TWILIO_ACCOUNT_SID;
+  const authToken = process.env.TWILIO_AUTH_TOKEN;
+  if (!accountSid || !authToken) {
+    throw new Error('Twilio credentials not configured');
+  }
+  return twilio(accountSid, authToken);
+}
 
 export async function POST(request: Request) {
   try {
@@ -59,6 +65,7 @@ export async function POST(request: Request) {
 
     // Send WhatsApp notification
     try {
+      const client = getTwilioClient();
       await client.messages.create({
         from: 'whatsapp:+14155238886',
         contentSid: 'HXb5b62575e6e4ff6129ad7c8efe1f983e',
@@ -83,3 +90,4 @@ export async function POST(request: Request) {
     )
   }
 }
+

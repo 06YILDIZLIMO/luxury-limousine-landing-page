@@ -1,3 +1,4 @@
+
 import React from "react"
 import type { Metadata } from 'next'
 import { Playfair_Display, Inter } from 'next/font/google'
@@ -16,30 +17,137 @@ const inter = Inter({
   display: "swap",
 })
 
-export const metadata: Metadata = {
-  title: '06YILDIZ LIMO - Luxury Limousine Services in Ontario, Canada',
-  description: 'Premium chauffeur-driven limousine services for corporate events, special occasions, and airport transfers in Peterborough and across Ontario.',
-  keywords: 'limousine service, luxury transportation, chauffeur service, Peterborough, Ontario, Canada, corporate events, wedding limo, airport transfer',
-  verification: {
-    google: "fJL3__QsjMej_U0sJZ-CPuIDfJgYNyDcKmVlVAb9Rtk",
-  },
-  icons: {
-    icon: '/yildizlimo.png',
-    apple: '/yildizlimo.png',
-  },
+// ElevenLabs ConvAI Widget - Custom Element Type Declaration
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'elevenlabs-convai': React.DetailedHTMLProps<
+        React.HTMLAttributes<HTMLElement>,
+        HTMLElement
+      > & {
+        'agent-id'?: string
+        'background-color'?: string
+        'chat-icon-url'?: string
+        'chip-color'?: string
+        'font-size'?: string
+        'header-text-color'?: string
+        'input-color'?: string
+        'input-placeholder-color'?: string
+        'launcher-icon-url'?: string
+        'launcher-svg'?: string
+        'marker-color'?: string
+        metadata?: string
+        'open-chat-on-load'?: 'true' | 'false'
+        position?: 'left' | 'right'
+        'predefined-messages'?: string
+        'primary-color'?: string
+        'prompt-suggestions'?: string
+        'reaction-timeout-ms'?: number
+        'response-timeout-ms'?: number
+        'short-cut-enabled'?: 'true' | 'false'
+        'text-color'?: string
+        'transparent-background'?: 'true' | 'false'
+        'transfer-to-support'?: string
+        voice?: string
+        'voice-id'?: string
+        'signed-url'?: string
+      }
+    }
+  }
 }
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+// SEO Metadata - Optimized for Peterborough & Toronto searches
+export const metadata: Metadata = {
+  title: '06YILDIZ LIMO | Luxury Limousine Service Peterborough & Toronto | Airport Transfers',
+  description: 'Experience premium transportation with 06YILDIZ LIMO. Specialized in luxury airport transfers, wedding packages, and party bus rentals in Peterborough, Toronto, and the Kawarthas. Book your professional chauffeur today.',
+  keywords: [
+    'Limo service Peterborough',
+    'Toronto airport limousine',
+    'Party Bus rental Peterborough',
+    'Wedding limo Toronto',
+    '06YILDIZ LIMO',
+    'Luxury transportation Ontario',
+    'Airport transfers',
+    'Luxury limousine',
+    'Chauffeur service',
+    'Peterborough Ontario',
+    'Toronto to Peterborough',
+    'Pearson Airport',
+    'Niagara limousine'
+  ].join(', '),
+  authors: [{ name: '06YILDIZ LIMO' }],
+  creator: '06YILDIZ LIMO',
+  publisher: '06YILDIZ LIMO',
+  metadataBase: new URL('https://06yildizlimo.com'),
+  openGraph: {
+    type: 'website',
+    locale: 'en_CA',
+    url: 'https://06yildizlimo.com',
+    siteName: '06YILDIZ LIMO',
+    title: '06YILDIZ LIMO | Luxury Limousine Service Peterborough & Toronto',
+    description: 'Premium chauffeur-driven limousine services for airport transfers, weddings, and special occasions.',
+    images: [{ url: '/yildizlimo.png', width: 512, height: 512, alt: '06YILDIZ LIMO Logo' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: '06YILDIZ LIMO | Luxury Limousine Service',
+    description: 'Premium airport transfers and luxury transportation in Peterborough & Toronto',
+    images: ['/yildizlimo.png'],
+  },
+  robots: { index: true, follow: true },
+  verification: { google: "fJL3__QsjMej_U0sJZ-CPuIDfJgYNyDcKmVlVAb9Rtk" },
+  icons: { icon: '/yildizlimo.png', apple: '/yildizlimo.png' },
+}
+
+// ElevenLabs ConvAI Widget Configuration
+const ELEVENLABS_SCRIPT_URL = "https://unpkg.com/@elevenlabs/convai-widget-embed"
+const ELEVENLABS_AGENT_ID = "agent_0001kh8zyfnkf55a1q355vb3khzq"
+
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
+      <head>
+        <script 
+          src={ELEVENLABS_SCRIPT_URL} 
+          async 
+          type="text/javascript" 
+          crossOrigin="anonymous"
+        />
+      </head>
       <body className={`${playfair.variable} ${inter.variable} font-sans antialiased`}>
         {children}
         <Analytics />
+        
+        {/* ElevenLabs AI Voice Assistant Widget */}
+        <elevenlabs-convai
+          agent-id={ELEVENLABS_AGENT_ID}
+          position="right"
+          open-chat-on-load="false"
+          transparent-background="true"
+          primary-color="#B8860B"
+          background-color="#1a1a1a"
+          text-color="#ffffff"
+          header-text-color="#B8860B"
+          input-color="#2a2a2a"
+          input-placeholder-color="#888888"
+          chip-color="#B8860B"
+          font-size="16px"
+          transfer-to-support="+19179435984"
+          predefined-messages={JSON.stringify([
+            "Hello! I'd like to book a limousine for airport transfer.",
+            "What vehicles do you have available?",
+            "Can I get a quote for Peterborough to Toronto airport?",
+            "Do you offer wedding limousine services?",
+            "How much for a luxury sedan to YYZ?"
+          ])}
+          metadata={JSON.stringify({
+            source: 'website',
+            page: 'home',
+            brand: '06YILDIZ LIMO'
+          })}
+        />
       </body>
     </html>
   )
 }
+

@@ -1,4 +1,3 @@
-
 import VoiceResponse from 'twilio/lib/twiml/VoiceResponse';
 import { NextRequest, NextResponse } from 'next/server';
 
@@ -70,4 +69,3 @@ export async function GET() {
     headers: { 'Content-Type': 'text/xml' },
   });
 }
-
