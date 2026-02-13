@@ -2,43 +2,58 @@
 import VoiceResponse from 'twilio/lib/twiml/VoiceResponse';
 import { NextRequest, NextResponse } from 'next/server';
 
+const ELEVENLABS_AGENT_ID = process.env.ELEVENLABS_AGENT_ID || 'agent_0001kh8zyfnkf55a1q355vb3khzq';
+
 export async function POST(request: NextRequest) {
   const formData = await request.formData();
   const speechResult = formData.get('SpeechResult') as string;
   
   const voiceResponse = new VoiceResponse();
   
-  let aiMessage = '';
-  
+  // Use ElevenLabs ConvAI for intelligent responses
+  // The conversation will be handled by ElevenLabs API
   if (speechResult && speechResult.trim()) {
-    // Basic keyword-based responses (without AI)
-    const speech = speechResult.toLowerCase();
+    // Forward to ElevenLabs ConvAI API
+    const ELEVENLABS_API_KEY = process.env.ELEVENLABS_API_KEY;
     
-    if (speech.includes('book') || speech.includes('reservation') || speech.includes('reserve')) {
-      aiMessage = "Thank you for your interest in booking. Please visit our website at www.06yildizlimo.com to book your ride online, or call our reservation line. An agent will call you back shortly. Goodbye.";
-    } else if (speech.includes('price') || speech.includes('cost') || speech.includes('how much')) {
-      aiMessage = "Our luxury sedan service from Peterborough to Toronto airport starts at $350 plus HST. For a luxury SUV, it's $430 plus HST. Visit www.06yildizlimo.com for all pricing details. Thank you for calling.";
-    } else if (speech.includes('airport') || speech.includes('yyz') || speech.includes('toronto')) {
-      aiMessage = "We provide premium airport transfer services from Peterborough to Toronto Pearson airport. Our professional chauffeurs ensure a comfortable ride. Please visit our website or call for booking. Thank you.";
-    } else if (speech.includes('wedding') || speech.includes('party') || speech.includes('event')) {
-      aiMessage = "We offer luxury wedding and event services. Please visit www.06yildizlimo.com to see our fleet including Rolls-Royce, Mercedes S-Class, and party buses. Thank you for calling.";
-    } else if (speech.includes('thank') || speech.includes('bye') || speech.includes('goodbye')) {
-      aiMessage = "Thank you for calling Oh Six Yildiz Limo. We look forward to serving you. Goodbye!";
-    } else {
-      aiMessage = "Thank you for calling Oh Six Yildiz Limo. For reservations and pricing, please visit www.06yildizlimo.com or call our team. An agent will call you back shortly. Goodbye.";
+    try {
+      const response = await fetch(
+        `https://api.elevenlabs.io/v1/convai/conversational_ai/twilio/${ELEVENLABS_AGENT_ID}`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Authorization': `Bearer ${ELEVENLABS_API_KEY}`,
+          },
+          body: new URLSearchParams({
+            'CallSid': String(formData.get('CallSid') || ''),
+            'From': String(formData.get('From') || ''),
+            'To': String(formData.get('To') || ''),
+            'SpeechResult': speechResult,
+          }),
+        }
+      );
+      
+      if (response.ok) {
+        const twiml = await response.text();
+        return new NextResponse(twiml, {
+          headers: { 'Content-Type': 'text/xml' },
+        });
+      }
+    } catch (error) {
+      console.error('ElevenLabs API error:', error);
     }
-  } else {
-    aiMessage = "Welcome to Oh Six Yildiz Limo. Your premium transportation service. For reservations, please visit our website at www.06yildizlimo.com or call our team.";
   }
   
-  voiceResponse.say({
-    voice: 'Polly.Amy-Neural',
-    language: 'en-US'
-  }, aiMessage);
+  // Initial call setup - connect to ElevenLabs
+  const connect = voiceResponse.connect({
+    action: `/api/twilio/voice?agent_id=${ELEVENLABS_AGENT_ID}`,
+    method: 'POST',
+  });
   
-  voiceResponse.say({
-    voice: 'Polly.Amy-Neural',
-  }, "Thank you for calling Oh Six Yildiz Limo. Goodbye.");
+  connect.conversation({
+    url: `https://api.elevenlabs.io/v1/convai/conversational_ai/twilio/${ELEVENLABS_AGENT_ID}`,
+  });
   
   const twiml = voiceResponse.toString();
   
@@ -50,19 +65,15 @@ export async function POST(request: NextRequest) {
 export async function GET() {
   const voiceResponse = new VoiceResponse();
   
-  voiceResponse.say({
-    voice: 'Polly.Amy-Neural',
-    language: 'en-US'
-  }, "Welcome to Oh Six Yildiz Limo. Your premium transportation service. For reservations, please visit our website.");
-  
-  voiceResponse.gather({
-    input: 'speech' as any,
-    action: '/api/twilio/voice',
+  // Connect to ElevenLabs for the initial call
+  const connect = voiceResponse.connect({
+    action: `/api/twilio/voice?agent_id=${ELEVENLABS_AGENT_ID}`,
     method: 'POST',
-    timeout: 5,
-    speechTimeout: 'auto',
-    language: 'en-US',
-  } as any);
+  });
+  
+  connect.conversation({
+    url: `https://api.elevenlabs.io/v1/convai/conversational_ai/twilio/${ELEVENLABS_AGENT_ID}`,
+  });
   
   const twiml = voiceResponse.toString();
   
