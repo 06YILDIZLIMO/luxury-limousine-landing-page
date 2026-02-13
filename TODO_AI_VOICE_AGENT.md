@@ -180,6 +180,7 @@ git push
 - [x] transfer_to_support özelliği eklendi (+19179435984)
 - [x] Expert Human Transfer kuralları eklendi
 - [x] Build test et ✅
-- [ ] Vercel'de deploy et
+- [x] GitHub'a push edildi ✅
+- [ ] Vercel'de deploy et (Otomatik olarak tetiklendi)
 - [ ] **Live test: Widget'ı tarayıcıda test et!**
 
