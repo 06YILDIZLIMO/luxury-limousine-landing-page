@@ -68,6 +68,7 @@ export function PaymentButton({
       onClick={onClick}
       disabled={disabled}
       className="w-full bg-gold hover:bg-gold/90 text-background font-semibold text-lg py-4 px-6 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+      aria-label={`Pay ${amount.toFixed(2)} CAD deposit securely`}
     >
       <Lock className="w-5 h-5" />
       Pay ${amount.toFixed(2)} CAD Deposit
