@@ -19,14 +19,16 @@ Added ARIA landmark roles to all major sections of the website to improve screen
 - ✅ Added `role="main"` to `<main>` element
 
 ### 4. Section Components
-All major sections now have descriptive `aria-label` attributes:
+All section components are properly contained within the `<main>` landmark:
 
-- ✅ **Hero** (`components/hero.tsx`): `aria-label="Hero section"`
-- ✅ **Fleet** (`components/fleet.tsx`): `aria-label="Our fleet of luxury vehicles"`
-- ✅ **Services** (`components/services.tsx`): `aria-label="Our luxury services"`
-- ✅ **Reviews** (`components/google-reviews.tsx`): `aria-label="Customer reviews"`
-- ✅ **Booking** (`components/booking.tsx`): `aria-label="Booking form"`
-- ✅ **Contact** (`components/contact.tsx`): `aria-label="Contact information"`
+- ✅ **Hero** (`components/hero.tsx`): Standard `<section>` element
+- ✅ **Fleet** (`components/fleet.tsx`): Standard `<section>` element with id="fleet"
+- ✅ **Services** (`components/services.tsx`): Standard `<section>` element with id="services"
+- ✅ **Reviews** (`components/google-reviews.tsx`): Standard `<section>` element with id="reviews"
+- ✅ **Booking** (`components/booking.tsx`): Standard `<section>` element with id="booking"
+- ✅ **Contact** (`components/contact.tsx`): Standard `<section>` element with id="contact"
+
+**Note**: Section elements do NOT have `aria-label` attributes to avoid creating multiple landmark regions, which would violate the "one main landmark" rule.
 
 ## Benefits
 

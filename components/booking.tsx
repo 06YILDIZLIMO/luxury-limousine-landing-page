@@ -85,7 +85,7 @@ export function Booking() {
   const selectedService = SERVICE_PRICES[formData.serviceType as keyof typeof SERVICE_PRICES]
 
   return (
-    <section id="booking" aria-label="Booking form" className="py-24 bg-background relative overflow-hidden">
+    <section id="booking" className="py-24 bg-background relative overflow-hidden">
       {/* Decorative Background */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gold rounded-full blur-3xl" />

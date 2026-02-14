@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 
 export function Hero() {
   return (
-    <section aria-label="Hero section" className="relative h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative h-screen flex items-center justify-center overflow-hidden">
       {/* Arka Plan Resmi */}
       <div 
         className="absolute inset-0 z-0"
