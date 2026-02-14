@@ -1,4 +1,3 @@
-
 import React from "react"
 import type { Metadata } from 'next'
 import { Playfair_Display, Inter } from 'next/font/google'
@@ -109,7 +108,16 @@ export const metadata: Metadata = {
   },
   robots: { index: true, follow: true },
   verification: { google: "fJL3__QsjMej_U0sJZ-CPuIDfJgYNyDcKmVlVAb9Rtk" },
-  icons: { icon: '/yildizlimo.png', apple: '/yildizlimo.png' },
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/yildizlimo.png', sizes: '512x512', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/yildizlimo.png', sizes: '180x180', type: 'image/png' },
+    ],
+    shortcut: '/favicon.ico',
+  },
 }
 
 // ElevenLabs ConvAI Widget Configuration
@@ -163,4 +171,3 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     </html>
   )
 }
-
