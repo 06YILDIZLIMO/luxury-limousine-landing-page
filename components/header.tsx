@@ -78,8 +78,8 @@ export function Header() {
             />
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav role="navigation" aria-label="Main navigation" className="hidden lg:flex items-center gap-8">
+          {/* Desktop Navigation - Centered */}
+          <nav role="navigation" aria-label="Main navigation" className="hidden lg:flex items-center gap-8 absolute left-1/2 transform -translate-x-1/2">
             <Link 
               href="/fleet"
               className="text-sm text-foreground/80 hover:text-gold transition-colors"
@@ -110,7 +110,7 @@ export function Header() {
             </Link>
           </nav>
 
-          {/* Contact Info & CTA */}
+          {/* Contact Info & CTA - Right Side */}
           <div className="hidden lg:flex items-center gap-4">
             <a href="tel:+17093009006" className="flex items-center gap-2 text-sm text-foreground/80 hover:text-gold transition-colors">
               <Phone className="w-4 h-4" />
