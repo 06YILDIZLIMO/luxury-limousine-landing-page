@@ -26,7 +26,8 @@ interface PlaceDetails {
 
 async function fetchGoogleReviews(): Promise<PlaceDetails | null> {
   try {
-    const url = `https://places.googleapis.com/v1/places/${PLACE_ID}?fields=name,rating,userRatingsTotal,reviews&key=${API_KEY}`
+    // Use the stable Places API v3 (Text Search)
+    const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${PLACE_ID}&fields=name,rating,user_ratings_total,reviews&key=${API_KEY}`
     
     const response = await fetch(url, {
       method: 'GET',
@@ -40,7 +41,12 @@ async function fetchGoogleReviews(): Promise<PlaceDetails | null> {
     }
 
     const data = await response.json()
-    return data as PlaceDetails
+    
+    if (data.status !== 'OK') {
+      throw new Error(`Google API status: ${data.status}`)
+    }
+
+    return data.result as PlaceDetails
   } catch (error) {
     console.error('Error fetching Google reviews:', error)
     return null
