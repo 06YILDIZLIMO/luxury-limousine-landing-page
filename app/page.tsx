@@ -11,7 +11,7 @@ export default function Page() {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      <main>
+      <main role="main">
         <Hero />
         <Fleet />
         <Services />

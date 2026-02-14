@@ -48,6 +48,7 @@ export function Header() {
 
   return (
     <header 
+      role="banner"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled ? "bg-background/95 backdrop-blur-sm border-b border-border" : "bg-transparent"
       }`}
@@ -66,7 +67,7 @@ export function Header() {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-8">
+          <nav role="navigation" aria-label="Main navigation" className="hidden lg:flex items-center gap-8">
             <button 
               onClick={() => scrollToSection("fleet")}
               className="text-sm text-foreground/80 hover:text-gold transition-colors"
@@ -119,7 +120,7 @@ export function Header() {
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
           <div className="lg:hidden py-6 border-t border-border">
-            <nav className="flex flex-col gap-4">
+            <nav role="navigation" aria-label="Mobile navigation" className="flex flex-col gap-4">
               <button 
                 onClick={() => scrollToSection("fleet")}
                 className="text-left text-foreground/80 hover:text-gold transition-colors py-2"

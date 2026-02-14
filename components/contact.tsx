@@ -3,7 +3,7 @@ import { Phone, Mail, MapPin, Clock } from "lucide-react"
 
 export function Contact() {
   return (
-    <section id="contact" className="py-24 bg-gradient-to-b from-background to-card/30">
+    <section id="contact" aria-label="Contact information" className="py-24 bg-gradient-to-b from-background to-card/30">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-block px-4 py-1 rounded-full border border-gold/30 bg-gold/10 mb-4">

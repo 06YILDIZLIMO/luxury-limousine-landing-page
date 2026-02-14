@@ -7,7 +7,7 @@ export function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="bg-card border-t border-border">
+    <footer role="contentinfo" className="bg-card border-t border-border">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {/* Brand */}
@@ -29,7 +29,8 @@ export function Footer() {
           {/* Quick Links */}
           <div>
             <h3 className="font-serif font-bold text-lg mb-4">{'Quick Links'}</h3>
-            <ul className="space-y-2">
+            <nav role="navigation" aria-label="Quick links">
+              <ul className="space-y-2">
               <li>
                 <Link
                   href="/#fleet"
@@ -62,13 +63,15 @@ export function Footer() {
                   {'Contact'}
                 </Link>
               </li>
-            </ul>
+              </ul>
+            </nav>
           </div>
 
           {/* Services */}
           <div>
             <h3 className="font-serif font-bold text-lg mb-4">{'Services'}</h3>
-            <ul className="space-y-2 text-sm text-foreground/70">
+            <nav role="navigation" aria-label="Services">
+              <ul className="space-y-2 text-sm text-foreground/70">
               <li>
                 <Link href="/#services" className="hover:text-gold transition-colors">
                   {'Airport Transfers'}
@@ -99,7 +102,8 @@ export function Footer() {
                   {'Point-to-Point'}
                 </Link>
               </li>
-            </ul>
+              </ul>
+            </nav>
           </div>
 
           {/* Contact Info */}

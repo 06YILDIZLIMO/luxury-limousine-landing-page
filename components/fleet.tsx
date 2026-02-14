@@ -177,7 +177,7 @@ export function Fleet() {
   const [selectedVehicle, setSelectedVehicle] = useState<any>(null)
 
   return (
-    <section id="fleet" className="py-32 bg-background relative overflow-hidden">
+    <section id="fleet" aria-label="Our fleet of luxury vehicles" className="py-32 bg-background relative overflow-hidden">
       {/* Decorative Elements */}
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gold/5 rounded-full blur-3xl" />
       <div className="absolute bottom-0 left-0 w-[800px] h-[800px] bg-gold/5 rounded-full blur-3xl" />
