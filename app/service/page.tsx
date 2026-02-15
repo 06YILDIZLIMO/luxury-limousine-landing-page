@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: "Our Services - Luxury Limousine Services | 06YILDIZ LIMO",
   description: "Professional limousine services including airport transfers, corporate events, weddings, special occasions, city tours, and point-to-point transportation in Peterborough and across Ontario.",
   keywords: "limousine services, airport transfer, corporate events, wedding limo, special occasions, city tours, Peterborough limo service, Ontario transportation",
+  alternates: {
+    canonical: "https://www.06yildizlimo.com/service",
+  },
   openGraph: {
     title: "Our Services - Luxury Limousine Services | 06YILDIZ LIMO",
     description: "From corporate travel to life's most memorable moments, we provide exceptional limousine services tailored to your needs.",
