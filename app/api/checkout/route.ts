@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import Stripe from 'stripe'
 import twilio from 'twilio'
+import { ConversionEvents, sendConversionEvent, getClientIp, getUserAgent } from '@/lib/facebook-conversions-api'
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
   apiVersion: '2024-06-20',
@@ -19,7 +20,7 @@ const getTwilioClient = () => {
 export async function POST(request: Request) {
   try {
     const body = await request.json()
-    const { service, amount, customerName, customerEmail, customerPhone, pickupLocation, dropoffLocation, date, time, vehicleType } = body
+    const { service, amount, customerName, customerEmail, customerPhone, pickupLocation, dropoffLocation, date, time, vehicleType, eventId } = body
 
     // Create line items based on service type
     const serviceNames: Record<string, string> = {
@@ -63,6 +64,39 @@ export async function POST(request: Request) {
       },
     })
 
+    // Send Facebook Conversions API event - InitiateCheckout
+    try {
+      const clientIp = getClientIp(request)
+      const userAgent = getUserAgent(request)
+      
+      const conversionEvent = ConversionEvents.InitiateCheckout(
+        {
+          email: customerEmail,
+          phone: customerPhone,
+          firstName: customerName.split(' ')[0],
+          lastName: customerName.split(' ').slice(1).join(' '),
+          clientIpAddress: clientIp,
+          clientUserAgent: userAgent,
+        },
+        {
+          content_ids: [service],
+          content_name: serviceName,
+          content_category: 'Transportation',
+          value: amount,
+          currency: 'cad',
+          num_items: 1,
+        },
+        `${process.env.NEXT_PUBLIC_APP_URL || 'https://www.06yildizlimo.com'}/booking`,
+        eventId
+      )
+      
+      await sendConversionEvent(conversionEvent)
+      console.log('Facebook Conversions API - InitiateCheckout event sent')
+    } catch (fbError) {
+      console.error('Error sending Facebook conversion event:', fbError)
+      // Don't fail the checkout if Facebook tracking fails
+    }
+
     // Send WhatsApp notification
     try {
       const client = getTwilioClient();
@@ -81,7 +115,10 @@ export async function POST(request: Request) {
       // Don't fail the checkout if WhatsApp fails
     }
 
-    return NextResponse.json({ clientSecret: session.client_secret })
+    return NextResponse.json({ 
+      clientSecret: session.client_secret,
+      sessionId: session.id 
+    })
   } catch (error) {
     console.error('Error creating checkout session:', error)
     return NextResponse.json(

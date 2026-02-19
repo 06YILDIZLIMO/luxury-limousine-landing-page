@@ -2,12 +2,16 @@
 
 "use client"
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, Suspense } from 'react'
+
+// Force dynamic rendering to avoid build-time errors with useSearchParams
+export const dynamic = 'force-dynamic'
 import { useSearchParams } from 'next/navigation'
 import { CheckCircle, Calendar, MapPin, Clock, Car, Phone, Mail } from 'lucide-react'
 import Link from 'next/link'
+import { FacebookEvents } from '@/lib/facebook-pixel'
 
-export default function BookingSuccess() {
+function BookingSuccessContent() {
   const searchParams = useSearchParams()
   const [sessionStatus, setSessionStatus] = useState<{
     status: string
@@ -26,6 +30,23 @@ export default function BookingSuccess() {
         .then(data => {
           setSessionStatus(data)
           setLoading(false)
+          
+          // Track Purchase event on Facebook Pixel
+          if (data.status === 'complete' && data.amountTotal) {
+            FacebookEvents.Purchase({
+              content_ids: [data.metadata?.serviceType || 'limo-service'],
+              content_name: data.metadata?.vehicleType || 'Limousine Service',
+              content_type: 'product',
+              value: data.amountTotal / 100, // Convert from cents to dollars
+              currency: 'CAD',
+              transaction_id: sessionId,
+            })
+            
+            console.log('Facebook Purchase event tracked:', {
+              value: data.amountTotal / 100,
+              transaction_id: sessionId,
+            })
+          }
         })
         .catch(() => setLoading(false))
     } else {
@@ -158,5 +179,20 @@ export default function BookingSuccess() {
         </div>
       </div>
     </div>
+  )
+}
+
+export default function BookingSuccess() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-16 h-16 border-4 border-gold border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+          <p className="text-foreground/70">Loading...</p>
+        </div>
+      </div>
+    }>
+      <BookingSuccessContent />
+    </Suspense>
   )
 }

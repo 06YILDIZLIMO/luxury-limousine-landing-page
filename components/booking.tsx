@@ -8,6 +8,7 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Calendar, Clock, MapPin, Users, Send, CheckCircle, CreditCard, DollarSign } from "lucide-react"
 import { StripeCheckoutForm } from "@/components/stripe-checkout"
+import { FacebookEvents, generateEventId } from "@/lib/facebook-pixel"
 
 // Service pricing
 const SERVICE_PRICES = {
@@ -44,6 +45,19 @@ export function Booking() {
       const service = SERVICE_PRICES[formData.serviceType as keyof typeof SERVICE_PRICES]
       const amount = service?.deposit || 100
 
+      // Generate event ID for deduplication
+      const eventId = generateEventId()
+
+      // Track InitiateCheckout event
+      FacebookEvents.InitiateCheckout({
+        content_ids: [formData.serviceType],
+        content_name: service?.name || 'Limo Service',
+        content_category: 'Transportation',
+        value: amount,
+        currency: 'CAD',
+        num_items: 1,
+      })
+
       const response = await fetch('/api/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -58,6 +72,7 @@ export function Booking() {
           date: formData.date,
           time: formData.time,
           vehicleType: formData.vehicleType,
+          eventId, // Pass event ID for server-side tracking
         }),
       })
 
@@ -76,10 +91,26 @@ export function Booking() {
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target
+    
     setFormData(prev => ({
       ...prev,
-      [e.target.name]: e.target.value
+      [name]: value
     }))
+
+    // Track service selection as AddToCart event
+    if (name === 'serviceType' && value) {
+      const service = SERVICE_PRICES[value as keyof typeof SERVICE_PRICES]
+      if (service) {
+        FacebookEvents.AddToCart({
+          content_ids: [value],
+          content_name: service.name,
+          content_type: 'product',
+          value: service.deposit,
+          currency: 'CAD',
+        })
+      }
+    }
   }
 
   const selectedService = SERVICE_PRICES[formData.serviceType as keyof typeof SERVICE_PRICES]
