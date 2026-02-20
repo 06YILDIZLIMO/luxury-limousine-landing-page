@@ -85,7 +85,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_CA',
-    url: 'https://www.06yildizlimo.com',
+    url: 'https://06yildizlimo.com',
     siteName: '06YILDIZ LIMO - Luxury Limousine Service',
     title: '06YILDIZ LIMO | Premium Limousine Service in Peterborough & Toronto',
     description: 'Experience world-class luxury transportation. Premium chauffeur-driven limousine services for corporate events, weddings, airport transfers, and special occasions in Peterborough and across Ontario.',

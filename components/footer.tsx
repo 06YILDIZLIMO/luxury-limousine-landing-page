@@ -33,7 +33,7 @@ export function Footer() {
               <ul className="space-y-2">
               <li>
                 <Link
-                  href="/#fleet"
+                  href="/fleet"
                   className="text-sm text-foreground/70 hover:text-gold transition-colors"
                 >
                   {'Our Fleet'}
@@ -41,7 +41,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/#services"
+                  href="/service"
                   className="text-sm text-foreground/70 hover:text-gold transition-colors"
                 >
                   {'Services'}
@@ -57,7 +57,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/#contact"
+                  href="/contact"
                   className="text-sm text-foreground/70 hover:text-gold transition-colors"
                 >
                   {'Contact'}
@@ -73,32 +73,32 @@ export function Footer() {
             <nav role="navigation" aria-label="Services">
               <ul className="space-y-2 text-sm text-foreground/70">
               <li>
-                <Link href="/#services" className="hover:text-gold transition-colors">
+                <Link href="/service" className="hover:text-gold transition-colors">
                   {'Airport Transfers'}
                 </Link>
               </li>
               <li>
-                <Link href="/#services" className="hover:text-gold transition-colors">
+                <Link href="/service" className="hover:text-gold transition-colors">
                   {'Corporate Events'}
                 </Link>
               </li>
               <li>
-                <Link href="/#services" className="hover:text-gold transition-colors">
+                <Link href="/service" className="hover:text-gold transition-colors">
                   {'Wedding Services'}
                 </Link>
               </li>
               <li>
-                <Link href="/#services" className="hover:text-gold transition-colors">
+                <Link href="/service" className="hover:text-gold transition-colors">
                   {'Special Occasions'}
                 </Link>
               </li>
               <li>
-                <Link href="/#services" className="hover:text-gold transition-colors">
+                <Link href="/service" className="hover:text-gold transition-colors">
                   {'City Tours'}
                 </Link>
               </li>
               <li>
-                <Link href="/#services" className="hover:text-gold transition-colors">
+                <Link href="/service" className="hover:text-gold transition-colors">
                   {'Point-to-Point'}
                 </Link>
               </li>
