@@ -30,17 +30,13 @@
   ],
   "redirects": [
     {
-      "source": "http://06yildizlimo.com/:path*",
-      "destination": "https://06yildizlimo.com/:path*",
-      "permanent": true
-    },
-    {
-      "source": "http://www.06yildizlimo.com/:path*",
-      "destination": "https://06yildizlimo.com/:path*",
-      "permanent": true
-    },
-    {
-      "source": "https://www.06yildizlimo.com/:path*",
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.06yildizlimo.com"
+        }
+      ],
       "destination": "https://06yildizlimo.com/:path*",
       "permanent": true
     }
