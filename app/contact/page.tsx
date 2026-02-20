@@ -8,13 +8,13 @@ export const metadata: Metadata = {
   description: "Contact 06YILDIZ LIMO for luxury limousine services in Peterborough, Ontario. Call us at +1 (709) 300-9006 or email 06yildizlimousine@gmail.com. Available 24/7 for your transportation needs.",
   keywords: "contact limo service, Peterborough limousine, book limo, luxury transportation contact, 06YILDIZ LIMO contact",
   alternates: {
-    canonical: "https://www.06yildizlimo.com/contact",
+    canonical: "https://06yildizlimo.com/contact",
   },
   openGraph: {
     title: "Contact Us - Get in Touch | 06YILDIZ LIMO",
     description: "Contact us for luxury limousine services. Available 24/7 for your transportation needs in Peterborough and across Ontario.",
     type: "website",
-    url: "https://www.06yildizlimo.com/contact",
+    url: "https://06yildizlimo.com/contact",
   },
 }
 

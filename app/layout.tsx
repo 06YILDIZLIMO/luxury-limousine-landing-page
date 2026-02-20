@@ -78,9 +78,9 @@ export const metadata: Metadata = {
   authors: [{ name: '06YILDIZ LIMO' }],
   creator: '06YILDIZ LIMO',
   publisher: '06YILDIZ LIMO',
-  metadataBase: new URL('https://www.06yildizlimo.com'),
+  metadataBase: new URL('https://06yildizlimo.com'),
   alternates: {
-    canonical: 'https://www.06yildizlimo.com',
+    canonical: 'https://06yildizlimo.com',
   },
   openGraph: {
     type: 'website',
@@ -125,10 +125,172 @@ export const metadata: Metadata = {
 const ELEVENLABS_SCRIPT_URL = "https://unpkg.com/@elevenlabs/convai-widget-embed"
 const ELEVENLABS_AGENT_ID = "agent_0001kh8zyfnkf55a1q355vb3khzq"
 
+// JSON-LD: Local Business Schema (Google My Business signals)
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LimousineService",
+  "@id": "https://06yildizlimo.com/#business",
+  "name": "06YILDIZ LIMO",
+  "alternateName": "06 Yildiz Limousine",
+  "description": "Premium luxury limousine service in Peterborough, Ontario. Airport transfers, corporate events, weddings, and special occasions across Ontario.",
+  "url": "https://06yildizlimo.com",
+  "telephone": "+17093009006",
+  "email": "06yildizlimousine@gmail.com",
+  "priceRange": "$$",
+  "currenciesAccepted": "CAD",
+  "paymentAccepted": "Cash, Credit Card, Debit Card",
+  "logo": "https://06yildizlimo.com/yildizlimo.png",
+  "image": "https://06yildizlimo.com/og-image.png",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "2270 Lynhaven Road",
+    "addressLocality": "Peterborough",
+    "addressRegion": "ON",
+    "postalCode": "K9K 1V7",
+    "addressCountry": "CA"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 44.3091,
+    "longitude": -78.3197
+  },
+  "areaServed": [
+    { "@type": "City", "name": "Peterborough" },
+    { "@type": "City", "name": "Toronto" },
+    { "@type": "City", "name": "Niagara Falls" },
+    { "@type": "City", "name": "Muskoka" },
+    { "@type": "State", "name": "Ontario" }
+  ],
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "00:00",
+      "closes": "23:59"
+    }
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Luxury Limousine Services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Airport Transfer Peterborough to Toronto",
+          "description": "Reliable airport transportation from Peterborough to Toronto Pearson Airport (YYZ) with flight tracking and meet-and-greet service."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Wedding Limousine Peterborough",
+          "description": "Elegant wedding limousine packages with custom decorations and red-carpet service in Peterborough and Ontario."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Corporate Limousine Service Ontario",
+          "description": "Professional chauffeur services for business meetings, conferences, and executive travel across Ontario."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Special Occasions Limo",
+          "description": "Luxury transportation for birthdays, anniversaries, proms, and bachelorette parties in Peterborough."
+        }
+      }
+    ]
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "reviewCount": "47",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  "sameAs": [
+    "https://www.facebook.com/06yildizlimo",
+    "https://www.instagram.com/06yildizlimo"
+  ]
+}
+
+// JSON-LD: FAQ Schema (shows Q&A in Google search results)
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much does a limousine service cost in Peterborough?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Our luxury limousine services start from $75 CAD deposit. Airport transfers from Peterborough to Toronto Pearson Airport (YYZ) typically range from $150-$250 CAD depending on the vehicle. Contact us for a free custom quote within 30 minutes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you offer airport transfers from Peterborough to Toronto?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes! We specialize in airport transfers from Peterborough to Toronto Pearson International Airport (YYZ) and Billy Bishop Airport (YTZ). We track your flight and adjust pickup times accordingly. Available 24/7."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What luxury vehicles do you have in your fleet?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Our fleet includes Rolls-Royce Phantom, Mercedes-Benz S-Class, BMW 750Li, Cadillac Escalade ESV, Lincoln Navigator L, GMC Yukon XL, Volvo XC90, and a luxury party bus. All vehicles are meticulously maintained and driven by professional chauffeurs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you provide wedding limousine services in Peterborough?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Absolutely! We offer elegant wedding limousine packages including custom decorations, red-carpet service, and professional chauffeurs in formal attire. We serve Peterborough, Toronto, and all of Ontario."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How far in advance should I book a limousine?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We recommend booking at least 48 hours in advance for regular transfers and 2-4 weeks for weddings and special events. However, we also accommodate last-minute bookings based on availability. Call us at +1 (709) 300-9006 for urgent requests."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are your chauffeurs professionally trained?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, all our chauffeurs are professionally trained, licensed, background-checked, and insured. They are impeccably dressed in formal attire and have extensive knowledge of Ontario routes. Multilingual capabilities are available."
+      }
+    }
+  ]
+}
+
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
       <head>
+        {/* JSON-LD: Local Business - Critical for Google indexing & GMB */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+        />
+        {/* JSON-LD: FAQ - Shows Q&A boxes in Google search results */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+
         {/* ElevenLabs ConvAI Widget Script */}
         <script 
           src={ELEVENLABS_SCRIPT_URL} 

@@ -5,34 +5,44 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const currentDate = new Date()
 
   return [
-    // Home Page
+    // Home Page - Highest Priority
     {
       url: baseUrl,
       lastModified: currentDate,
       changeFrequency: 'weekly',
       priority: 1,
-      images: ['https://06yildizlimo.com/yildizlimo.png'],
+      images: [
+        'https://06yildizlimo.com/og-image.png',
+        'https://06yildizlimo.com/yildizlimo.png',
+      ],
     },
-    // Booking Page
+    // Booking Page - High Priority (conversion page)
     {
       url: `${baseUrl}/booking`,
       lastModified: currentDate,
       changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    // Services Page
-    {
-      url: `${baseUrl}/services`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.8,
+      priority: 0.95,
     },
     // Fleet Page
     {
       url: `${baseUrl}/fleet`,
       lastModified: currentDate,
       changeFrequency: 'monthly',
-      priority: 0.8,
+      priority: 0.85,
+      images: [
+        'https://06yildizlimo.com/rolls.png',
+        'https://06yildizlimo.com/mercedes.png',
+        'https://06yildizlimo.com/bmw.png',
+        'https://06yildizlimo.com/escalade.png',
+        'https://06yildizlimo.com/lincoln.png',
+      ],
+    },
+    // Service Page (FIXED: was /services, now /service)
+    {
+      url: `${baseUrl}/service`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.85,
     },
     // Contact Page
     {
@@ -61,13 +71,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: currentDate,
       changeFrequency: 'yearly',
       priority: 0.3,
-    },
-    // Booking Success Page
-    {
-      url: `${baseUrl}/booking/success`,
-      lastModified: currentDate,
-      changeFrequency: 'never',
-      priority: 0.5,
     },
   ]
 }

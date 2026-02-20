@@ -8,13 +8,13 @@ export const metadata: Metadata = {
   description: "Explore our collection of premium luxury vehicles including Rolls-Royce Phantom, Mercedes-Benz S-Class, BMW 750Li, Cadillac Escalade, and more. Professional chauffeur service in Peterborough, Ontario.",
   keywords: "luxury fleet, premium vehicles, Rolls-Royce, Mercedes-Benz, BMW, Cadillac Escalade, Lincoln Navigator, limousine fleet, Peterborough limo",
   alternates: {
-    canonical: "https://www.06yildizlimo.com/fleet",
+    canonical: "https://06yildizlimo.com/fleet",
   },
   openGraph: {
     title: "Our Fleet - Premium Luxury Vehicles | 06YILDIZ LIMO",
     description: "Explore our collection of premium luxury vehicles for your special occasions and business travel needs.",
     type: "website",
-    url: "https://www.06yildizlimo.com/fleet",
+    url: "https://06yildizlimo.com/fleet",
   },
 }
 
