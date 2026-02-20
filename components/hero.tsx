@@ -5,16 +5,11 @@ import { Button } from "@/components/ui/button"
 export function Hero() {
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
-      {/* Arka Plan Resmi */}
-      <div 
-        className="absolute inset-0 z-0"
-        style={{
-          backgroundImage: 'url("/yildizlimostart.png")',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      >
-        <div className="absolute inset-0 bg-black/70" />
+      {/* Arka Plan - Lüks Gradient */}
+      <div className="absolute inset-0 z-0 bg-gradient-to-br from-black via-zinc-900 to-black">
+        <div className="absolute inset-0 opacity-20" style={{
+          backgroundImage: 'radial-gradient(ellipse at 20% 50%, #BF953F22 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, #BF953F11 0%, transparent 50%)'
+        }} />
       </div>
 
       <div className="relative z-10 container mx-auto px-4 text-center">
