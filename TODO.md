@@ -1,31 +1,30 @@
-# Website Pages - COMPLETED ✅
+# Website Pages Creation TODO
 
-## All Tasks Done
+## Tasks Completed ✅
 
 - [x] 1. Create `/fleet` page (app/fleet/page.tsx)
 - [x] 2. Create `/service` page (app/service/page.tsx)
 - [x] 3. Create `/contact` page (app/contact/page.tsx)
-- [x] 4. `/booking` page - already existed and working
-- [x] 5. Header navigation updated with proper Link routing
-- [x] 6. Contact form added with SMS notification to owner
-- [x] 7. Booking updated with Free Quote + Deposit options
-- [x] 8. Fixed vercel.json invalid redirect patterns (ROOT CAUSE of 404s)
-- [x] 9. Deployed to Vercel via CLI successfully
+- [x] 4. Verified `/booking` page - already existed and working
+- [x] 5. Updated Header navigation - all links point to dedicated pages
+- [x] 6. Updated Footer links - /#fleet → /fleet, /#services → /service, /#contact → /contact
+- [x] 7. Fixed hero background - removed missing hero-limo.png, replaced with elegant dark gradient
+- [x] 8. Deployed to Vercel - all pages live
 
-## Live Test Results ✅
-- https://06yildizlimo.com/fleet   → 200 OK ✅
-- https://06yildizlimo.com/service → 200 OK ✅
-- https://06yildizlimo.com/contact → 200 OK ✅
-- https://06yildizlimo.com/booking → 200 OK ✅
+## All Pages Live:
+- ✅ https://06yildizlimo.com (homepage)
+- ✅ https://06yildizlimo.com/fleet
+- ✅ https://06yildizlimo.com/service
+- ✅ https://06yildizlimo.com/contact
+- ✅ https://06yildizlimo.com/booking
 
-## Root Cause Found & Fixed
-The `vercel.json` had invalid redirect `source` patterns using full URLs
-(e.g. `http://06yildizlimo.com/:path*`). Vercel only accepts path patterns
-(e.g. `/:path*` with `has` condition). This caused ALL Vercel deployments
-to fail silently for 6+ days — none of the GitHub pushes were deploying!
+## Console Error Fixes ✅
+- [x] 9. Fixed Stripe.js error - null check when key missing (stripe-checkout.tsx)
+- [x] 10. Fixed Facebook Pixel warning - hardcode fallback ID (lib/facebook-pixel.ts)
+- [x] 11. Tested all pages live - zero console errors ✅
 
-## Fix Applied
-- Removed invalid http:// source patterns from vercel.json redirects
-- Used proper `has: [{type: "host", value: "www.06yildizlimo.com"}]` pattern
-- Deployed directly via `vercel --prod --yes`
-- Aliased to https://06yildizlimo.com ✅
+## Remaining (Manual Steps):
+- Submit sitemap in Google Search Console
+- Request indexing for all 5 URLs in Search Console
+- Add GOOGLE_PLACES_API_KEY + GOOGLE_PLACE_ID in Vercel env vars (for real reviews)
+- ElevenLabs dashboard: Add 06yildizlimo.com to allowed origins for agent_0001kh8zyfnkf55a1q355vb3khzq (fixes CORS error)

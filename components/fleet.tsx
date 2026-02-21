@@ -4,6 +4,8 @@ import { Crown, Briefcase, Users, Sparkles, X } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { useState } from "react"
+import type { MouseEvent } from "react"
+import Image from "next/image"
 
 // PRESTIGE COLLECTION - The Kings League
 const prestigeVehicles = [
@@ -12,7 +14,7 @@ const prestigeVehicles = [
     description: "The ultimate expression of luxury - unmatched elegance in timeless black",
     capacity: "Up to 4 passengers",
     features: ["Starlight Headliner", "Lamb's Wool Carpets", "Bespoke Audio System", "Magic Carpet Ride Suspension", "Privacy Dividers", "Champagne Cooler", "Heated & Ventilated Seats", "WiFi Connectivity"],
-    image: "/rolls.png",
+    image: "/rolls.webp",
     icon: Crown,
   },
   {
@@ -20,7 +22,7 @@ const prestigeVehicles = [
     description: "The pinnacle of automotive luxury in classic black elegance",
     capacity: "Up to 4 passengers",
     features: ["Executive Rear Seats", "Burmester 3D Surround Sound", "Air Balance Cabin Fragrance", "Magic Body Control Suspension", "Massage Seats", "Panoramic Sunroof", "Ambient Lighting", "Driver Assistance Package"],
-    image: "/mercedes.png",
+    image: "/mercedes.webp",
     icon: Crown,
   },
   {
@@ -28,7 +30,7 @@ const prestigeVehicles = [
     description: "German engineering excellence in sleek black with executive comfort",
     capacity: "Up to 4 passengers",
     features: ["Executive Lounge Seating", "Gesture Control System", "Laser Lights", "Sky Lounge Glass Roof", "Bowers & Wilkins Diamond Audio", "Wireless Phone Charging", "Parking Assistant", "Carbon Fiber Interior Trim"],
-    image: "/bmw.png",
+    image: "/bmw.webp",
     icon: Briefcase,
   },
 ]
@@ -40,7 +42,7 @@ const executiveVehicles = [
     description: "Iconic American luxury SUV with extended space and commanding presence",
     capacity: "Up to 7 passengers",
     features: ["Executive Black Leather", "AKG Studio Audio", "Super Cruise Hands-Free Driving", "Rear Entertainment System", "Wireless Charging", "Heated Second Row Seats", "Power Fold Third Row", "Bose Centerpoint Audio"],
-    image: "/escalade.png",
+    image: "/escalade.webp",
     icon: Crown,
   },
   {
@@ -48,7 +50,7 @@ const executiveVehicles = [
     description: "Sophisticated American luxury with spacious black exterior and modern technology",
     capacity: "Up to 7 passengers",
     features: ["Perfect Position Seats with Massage", "Revel Ultima 3D Audio", "Panoramic Vista Roof", "WiFi Hotspot for up to 10 Devices", "Active Glide Suspension", "Phone as Key Technology", "Heads-Up Display", "Lane Keeping System"],
-    image: "/lincoln.png",
+    image: "/lincoln.webp",
     icon: Crown,
   },
   {
@@ -56,7 +58,7 @@ const executiveVehicles = [
     description: "Premium full-size black SUV combining power and sophisticated luxury",
     capacity: "Up to 7 passengers",
     features: ["Denali Premium Interior", "Bose Premium Audio", "Magnetic Ride Control", "Wireless Charging", "Heated & Ventilated Seats", "Power Liftgate", "Advanced Safety Features", "Luxury Package"],
-    image: "/yukon.png",
+    image: "/yukon.webp",
     icon: Crown,
   },
   {
@@ -64,7 +66,7 @@ const executiveVehicles = [
     description: "Full-size luxury SUV with ultimate space and premium comfort for large groups",
     capacity: "Up to 8 passengers",
     features: ["Premium Leather Interior", "Rear Seat Entertainment", "Magnetic Ride Control", "Bose 10-Speaker Audio", "Power Retractable Running Boards", "Heated & Ventilated Seats", "Wireless Apple CarPlay", "360-Degree Camera"],
-    image: "/Suburban.png",
+    image: "/Suburban.webp",
     icon: Users,
   },
   {
@@ -72,7 +74,7 @@ const executiveVehicles = [
     description: "Premium black passenger van for large groups with ultimate comfort",
     capacity: "Up to 12 passengers",
     features: ["Executive Leather Seating", "WiFi Connectivity", "Premium Audio System", "Individual Climate Control", "USB Charging Ports", "Vanity Mirrors", "Ample Luggage Space", "Privacy Partition"],
-    image: "/bus.png",
+    image: "/bus.webp",
     icon: Users,
   },
 ]
@@ -84,7 +86,7 @@ const premiumBusinessVehicles = [
     description: "Scandinavian luxury SUV with advanced safety and elegant black design",
     capacity: "Up to 4 passengers + Luggage",
     features: ["City Safety System", "Air Suspension", "Bowers & Wilkins Audio", "Panoramic Sunroof", "Massage Seats", "Pilot Assist", "360-Degree Camera", "Wireless Charging"],
-    image: "/VolvoXc90.png",
+    image: "/VolvoXc90.webp",
     icon: Briefcase,
   },
 ]
@@ -95,7 +97,7 @@ function VehicleModal({ vehicle, onClose }: { vehicle: any; onClose: () => void 
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200">
       <div className="relative w-full max-w-4xl bg-card border border-gold/30 rounded-2xl overflow-hidden shadow-2xl shadow-gold/20 animate-in zoom-in-95 duration-200">
         {/* Close Button */}
-        <button 
+        <button
           onClick={onClose}
           className="absolute top-4 right-4 z-10 w-10 h-10 bg-black/50 hover:bg-gold rounded-full flex items-center justify-center text-white hover:text-black transition-colors"
           aria-label="Close vehicle details"
@@ -106,11 +108,13 @@ function VehicleModal({ vehicle, onClose }: { vehicle: any; onClose: () => void 
         {/* Modal Content */}
         <div className="grid grid-cols-1 lg:grid-cols-2">
           {/* Image Section */}
-          <div className="relative h-80 lg:h-auto bg-black">
-            <img 
+          <div className="relative h-80 lg:h-auto bg-black min-h-[320px]">
+            <Image
               src={vehicle.image || "/placeholder.svg"}
               alt={vehicle.name}
-              className="w-full h-full object-cover"
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 50vw"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
             <div className="absolute bottom-6 left-6">
@@ -153,7 +157,7 @@ function VehicleModal({ vehicle, onClose }: { vehicle: any; onClose: () => void 
             </div>
 
             {/* CTA Button */}
-            <Button 
+            <Button
               size="lg"
               className="w-full bg-gold hover:bg-gold/90 text-black font-semibold text-lg py-6 group"
               onClick={() => {
@@ -182,7 +186,7 @@ export function Fleet() {
       {/* Decorative Elements */}
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gold/5 rounded-full blur-3xl" />
       <div className="absolute bottom-0 left-0 w-[800px] h-[800px] bg-gold/5 rounded-full blur-3xl" />
-      
+
       <div className="container mx-auto px-4 relative z-10 max-w-7xl">
         {/* Section Header */}
         <div className="text-center max-w-4xl mx-auto mb-20">
@@ -200,10 +204,12 @@ export function Fleet() {
         {/* Award Banner */}
         <div className="flex justify-center mb-12">
           <a href="https://threebestrated.ca/limo-service-in-peterborough-on" target="_blank" rel="noopener noreferrer" className="inline-block border-0">
-            <img 
-              src="https://threebestrated.ca/awards/limo_service-peterborough-2026-drk.svg" 
-              alt="Best Limo service in Peterborough" 
+            <img
+              src="https://threebestrated.ca/awards/limo_service-peterborough-2026-drk.svg"
+              alt="Best Limo service in Peterborough"
               className="h-32 md:h-40 object-contain"
+              width={160}
+              height={160}
             />
           </a>
         </div>
@@ -233,10 +239,13 @@ export function Fleet() {
                   onClick={() => setSelectedVehicle(vehicle)}
                 >
                   <div className="relative h-72 overflow-hidden">
-                    <img
+                    <Image
                       src={vehicle.image || "/placeholder.svg"}
                       alt={vehicle.name}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-700"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      priority={index === 0}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
                     <div className="absolute top-6 right-6 w-14 h-14 bg-gold rounded-full flex items-center justify-center shadow-lg">
@@ -267,7 +276,7 @@ export function Fleet() {
                     <Button
                       size="lg"
                       className="w-full bg-gold hover:bg-gold/90 text-black font-semibold"
-                      onClick={(e) => {
+                      onClick={(e: MouseEvent<HTMLButtonElement>) => {
                         e.stopPropagation()
                         const bookingSection = document.getElementById("booking")
                         if (bookingSection) {
@@ -308,10 +317,12 @@ export function Fleet() {
                   onClick={() => setSelectedVehicle(vehicle)}
                 >
                   <div className="relative h-56 overflow-hidden">
-                    <img
+                    <Image
                       src={vehicle.image || "/placeholder.svg"}
                       alt={vehicle.name}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-700"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 20vw"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/60 to-transparent" />
                     <div className="absolute top-4 right-4 w-12 h-12 bg-gold/20 rounded-full flex items-center justify-center">
@@ -333,7 +344,7 @@ export function Fleet() {
                     <Button
                       size="sm"
                       className="w-full bg-gold hover:bg-gold/90 text-black font-medium text-sm"
-                      onClick={(e) => {
+                      onClick={(e: MouseEvent<HTMLButtonElement>) => {
                         e.stopPropagation()
                         const bookingSection = document.getElementById("booking")
                         if (bookingSection) {
@@ -375,10 +386,12 @@ export function Fleet() {
                   onClick={() => setSelectedVehicle(vehicle)}
                 >
                   <div className="relative h-72 overflow-hidden">
-                    <img
+                    <Image
                       src={vehicle.image || "/placeholder.svg"}
                       alt={vehicle.name}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-700"
+                      sizes="(max-width: 768px) 100vw, 672px"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
                     <div className="absolute top-6 right-6 w-14 h-14 bg-gold rounded-full flex items-center justify-center shadow-lg">
@@ -409,7 +422,7 @@ export function Fleet() {
                     <Button
                       size="lg"
                       className="w-full bg-gold hover:bg-gold/90 text-black font-semibold"
-                      onClick={(e) => {
+                      onClick={(e: MouseEvent<HTMLButtonElement>) => {
                         e.stopPropagation()
                         const bookingSection = document.getElementById("booking")
                         if (bookingSection) {
@@ -429,9 +442,9 @@ export function Fleet() {
 
       {/* Vehicle Detail Modal */}
       {selectedVehicle && (
-        <VehicleModal 
-          vehicle={selectedVehicle} 
-          onClose={() => setSelectedVehicle(null)} 
+        <VehicleModal
+          vehicle={selectedVehicle}
+          onClose={() => setSelectedVehicle(null)}
         />
       )}
     </section>

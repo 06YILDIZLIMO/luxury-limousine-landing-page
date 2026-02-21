@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { ArrowRight, Star } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import Image from "next/image"
 
 export function Hero() {
   return (
@@ -20,7 +21,14 @@ export function Hero() {
 
         {/* LOGO BURADA (Boyutu h-16 ve md:h-24 yaptık, çok daha kibar oldu) */}
         <div className="flex justify-center mb-6">
-          <img src="/yildizlimo.png" alt="yildizlimo.png" className="h-16 md:h-24" />
+          <Image
+            src="/yildizlimo.webp"
+            alt="06YILDIZ LIMO Logo"
+            width={384}
+            height={148}
+            className="h-16 md:h-24 w-auto"
+            priority
+          />
         </div>
 
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-black text-white mb-6 tracking-tight leading-tight">

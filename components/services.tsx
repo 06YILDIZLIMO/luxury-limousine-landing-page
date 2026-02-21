@@ -1,5 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { Plane, Briefcase, Heart, PartyPopper, Building2, MapPin } from "lucide-react"
+import Image from "next/image"
 
 const services = [
   {
@@ -83,11 +84,13 @@ export function Services() {
         <div className="max-w-6xl mx-auto">
           <Card className="bg-gradient-to-br from-card to-card/50 border-gold/30 overflow-hidden">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              <div className="relative h-64 lg:h-auto">
-                <img 
-                  src="/yildizlimostart.png"
+              <div className="relative h-64 lg:min-h-[380px]">
+                <Image
+                  src="/yildizlimostart.webp"
                   alt="Luxury limousine fleet"
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent to-card lg:to-transparent" />
               </div>

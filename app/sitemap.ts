@@ -13,7 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
       images: [
         'https://06yildizlimo.com/og-image.png',
-        'https://06yildizlimo.com/yildizlimo.png',
+        'https://06yildizlimo.com/yildizlimo.webp',
       ],
     },
     // Booking Page - High Priority (conversion page)
@@ -30,11 +30,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.85,
       images: [
-        'https://06yildizlimo.com/rolls.png',
-        'https://06yildizlimo.com/mercedes.png',
-        'https://06yildizlimo.com/bmw.png',
-        'https://06yildizlimo.com/escalade.png',
-        'https://06yildizlimo.com/lincoln.png',
+        'https://06yildizlimo.com/rolls.webp',
+        'https://06yildizlimo.com/mercedes.webp',
+        'https://06yildizlimo.com/bmw.webp',
+        'https://06yildizlimo.com/escalade.webp',
+        'https://06yildizlimo.com/lincoln.webp',
+        'https://06yildizlimo.com/yukon.webp',
+        'https://06yildizlimo.com/Suburban.webp',
+        'https://06yildizlimo.com/VolvoXc90.webp',
       ],
     },
     // Service Page (FIXED: was /services, now /service)

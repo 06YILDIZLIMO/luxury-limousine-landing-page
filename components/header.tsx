@@ -70,7 +70,7 @@ export function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <Image
-              src="/yildizlimo.png"
+              src="/yildizlimo.webp"
               alt="06YILDIZ LIMO Logo"
               width={150}
               height={50}
