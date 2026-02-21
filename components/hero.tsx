@@ -1,6 +1,5 @@
 import Link from "next/link"
 import { ArrowRight, Star } from "lucide-react"
-import { Button } from "@/components/ui/button"
 import Image from "next/image"
 
 export function Hero() {
@@ -40,10 +39,13 @@ export function Hero() {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
-          <Button size="lg" className="bg-[#BF953F] hover:bg-[#B38728] text-black font-bold text-lg px-8 py-6 rounded-full transition-transform hover:scale-105">
+          <Link
+            href="/booking"
+            className="inline-flex items-center justify-center bg-[#BF953F] hover:bg-[#B38728] text-black font-bold text-lg px-8 py-4 rounded-full transition-transform hover:scale-105"
+          >
             Book Now
             <ArrowRight className="ml-2 w-5 h-5" />
-          </Button>
+          </Link>
         </div>
       </div>
     </section>

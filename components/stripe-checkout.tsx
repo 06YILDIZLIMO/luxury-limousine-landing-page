@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { loadStripe } from '@stripe/stripe-js'
-import { Elements, EmbeddedCheckoutProvider, EmbeddedCheckout } from '@stripe/react-stripe-js'
+import { EmbeddedCheckoutProvider, EmbeddedCheckout } from '@stripe/react-stripe-js'
 import { Lock, CreditCard } from 'lucide-react'
 
 // Initialize Stripe with publishable key - only load if key exists
@@ -46,11 +46,9 @@ export function StripeCheckoutForm({ clientSecret, onSuccess, onCancel }: Checko
         </div>
       </div>
 
-      <Elements stripe={stripePromise} options={options}>
-        <EmbeddedCheckoutProvider stripe={stripePromise} options={options}>
-          <EmbeddedCheckout />
-        </EmbeddedCheckoutProvider>
-      </Elements>
+      <EmbeddedCheckoutProvider stripe={stripePromise} options={options}>
+        <EmbeddedCheckout />
+      </EmbeddedCheckoutProvider>
     </div>
   )
 }

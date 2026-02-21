@@ -1,11 +1,6 @@
-
-
 "use client"
 
 import { useEffect, useState, Suspense } from 'react'
-
-// Force dynamic rendering to avoid build-time errors with useSearchParams
-export const dynamic = 'force-dynamic'
 import { useSearchParams } from 'next/navigation'
 import { CheckCircle, Calendar, MapPin, Clock, Car, Phone, Mail } from 'lucide-react'
 import Link from 'next/link'
@@ -37,13 +32,13 @@ function BookingSuccessContent() {
               content_ids: [data.metadata?.serviceType || 'limo-service'],
               content_name: data.metadata?.vehicleType || 'Limousine Service',
               content_type: 'product',
-              value: data.amountTotal / 100, // Convert from cents to dollars
+              value: data.amountTotal,
               currency: 'CAD',
               transaction_id: sessionId,
             })
             
             console.log('Facebook Purchase event tracked:', {
-              value: data.amountTotal / 100,
+              value: data.amountTotal,
               transaction_id: sessionId,
             })
           }

@@ -21,10 +21,7 @@ interface PlaceData {
   reviews: Review[]
 }
 
-// Client-safe Place ID - can be updated via window.__ENV__ in production
-const PLACE_ID = typeof window !== 'undefined' 
-  ? (window as any).__ENV__?.NEXT_PUBLIC_GOOGLE_PLACE_ID || '0xacac4a9221bd35eb:0x8c54e83bc0134c3b'
-  : '0xacac4a9221bd35eb:0x8c54e83bc0134c3b'
+const PLACE_ID = '0xacac4a9221bd35eb:0x8c54e83bc0134c3b'
 
 // Mock reviews for demo (when API is not configured)
 const MOCK_REVIEWS: Review[] = [
