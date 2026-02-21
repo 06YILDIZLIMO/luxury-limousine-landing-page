@@ -207,13 +207,6 @@ const localBusinessSchema = {
       }
     ]
   },
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "5",
-    "reviewCount": "47",
-    "bestRating": "5",
-    "worstRating": "1"
-  },
   "sameAs": [
     "https://www.facebook.com/06yildizlimo",
     "https://www.instagram.com/06yildizlimo"
