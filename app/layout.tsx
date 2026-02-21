@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { Playfair_Display, Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { FacebookPixel } from '@/components/FacebookPixel'
+import { FloatingCallButton } from '@/components/floating-call-button'
 import Script from 'next/script'
 import './globals.css'
 
@@ -289,6 +290,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body className={`${playfair.variable} ${inter.variable} font-sans antialiased`}>
         <FacebookPixel />
         {children}
+        <FloatingCallButton />
         <Analytics />
 
         {/* Facebook Pixel - afterInteractive: does not block rendering */}

@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { ArrowRight, Star } from "lucide-react"
+import { ArrowRight, Star, Phone } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 
@@ -39,12 +39,28 @@ export function Hero() {
           Experience world-class luxury transportation. Whether it's a corporate event, wedding, or airport transfer, we define elegance in motion.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
-          <Button size="lg" className="bg-[#BF953F] hover:bg-[#B38728] text-black font-bold text-lg px-8 py-6 rounded-full transition-transform hover:scale-105">
-            Book Now
-            <ArrowRight className="ml-2 w-5 h-5" />
-          </Button>
+        {/* CTA Buttons */}
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+          {/* CALL NOW - En önemli CTA */}
+          <a href="tel:+17093009006" className="w-full sm:w-auto">
+            <Button size="lg" className="w-full sm:w-auto bg-[#BF953F] hover:bg-[#B38728] text-black font-bold text-lg px-8 py-6 rounded-full transition-transform hover:scale-105 shadow-lg shadow-[#BF953F]/30">
+              <Phone className="mr-2 w-5 h-5" />
+              Call Now: (709) 300-9006
+            </Button>
+          </a>
+          {/* Book Online */}
+          <Link href="/booking" className="w-full sm:w-auto">
+            <Button size="lg" variant="outline" className="w-full sm:w-auto border-[#BF953F] text-[#BF953F] hover:bg-[#BF953F]/10 font-bold text-lg px-8 py-6 rounded-full transition-transform hover:scale-105">
+              Book Online
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
+          </Link>
         </div>
+
+        {/* Phone number text - extra visibility */}
+        <p className="text-[#BF953F] text-sm font-semibold tracking-wider mb-16">
+          📞 Available 24/7 · Free Quote in 30 Minutes
+        </p>
       </div>
     </section>
   )
