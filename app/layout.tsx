@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { Playfair_Display, Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { FacebookPixel } from '@/components/FacebookPixel'
+import Script from 'next/script'
 import './globals.css'
 
 const playfair = Playfair_Display({ 
@@ -112,10 +113,10 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: 'any' },
-      { url: '/yildizlimo.png', sizes: '512x512', type: 'image/png' },
+      { url: '/yildizlimo.webp', sizes: '512x512', type: 'image/webp' },
     ],
     apple: [
-      { url: '/yildizlimo.png', sizes: '180x180', type: 'image/png' },
+      { url: '/yildizlimo.webp', sizes: '180x180', type: 'image/webp' },
     ],
     shortcut: '/favicon.ico',
   },
@@ -124,6 +125,7 @@ export const metadata: Metadata = {
 // ElevenLabs ConvAI Widget Configuration
 const ELEVENLABS_SCRIPT_URL = "https://unpkg.com/@elevenlabs/convai-widget-embed"
 const ELEVENLABS_AGENT_ID = "agent_0001kh8zyfnkf55a1q355vb3khzq"
+const FB_PIXEL_ID = "1523730565356174"
 
 // JSON-LD: Local Business Schema (Google My Business signals)
 const localBusinessSchema = {
@@ -139,7 +141,7 @@ const localBusinessSchema = {
   "priceRange": "$$",
   "currenciesAccepted": "CAD",
   "paymentAccepted": "Cash, Credit Card, Debit Card",
-  "logo": "https://06yildizlimo.com/yildizlimo.png",
+  "logo": "https://06yildizlimo.com/yildizlimo.webp",
   "image": "https://06yildizlimo.com/og-image.png",
   "address": {
     "@type": "PostalAddress",
@@ -283,17 +285,16 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
         />
+      </head>
+      <body className={`${playfair.variable} ${inter.variable} font-sans antialiased`}>
+        <FacebookPixel />
+        {children}
+        <Analytics />
 
-        {/* ElevenLabs ConvAI Widget Script */}
-        <script 
-          src={ELEVENLABS_SCRIPT_URL} 
-          async 
-          type="text/javascript" 
-          crossOrigin="anonymous"
-        />
-        
-        {/* Meta Pixel Code */}
-        <script
+        {/* Facebook Pixel - afterInteractive: does not block rendering */}
+        <Script
+          id="facebook-pixel"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               !function(f,b,e,v,n,t,s)
@@ -304,7 +305,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               t.src=v;s=b.getElementsByTagName(e)[0];
               s.parentNode.insertBefore(t,s)}(window, document,'script',
               'https://connect.facebook.net/en_US/fbevents.js');
-              fbq('init', '1523730565356174');
+              fbq('init', '${FB_PIXEL_ID}');
               fbq('track', 'PageView');
             `,
           }}
@@ -314,17 +315,18 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             height="1"
             width="1"
             style={{ display: 'none' }}
-            src="https://www.facebook.com/tr?id=1523730565356174&ev=PageView&noscript=1"
+            src={`https://www.facebook.com/tr?id=${FB_PIXEL_ID}&ev=PageView&noscript=1`}
             alt=""
           />
         </noscript>
-        {/* End Meta Pixel Code */}
-      </head>
-      <body className={`${playfair.variable} ${inter.variable} font-sans antialiased`}>
-        <FacebookPixel />
-        {children}
-        <Analytics />
-        
+
+        {/* ElevenLabs ConvAI Widget Script - lazyOnload: loads after page is interactive */}
+        <Script
+          src={ELEVENLABS_SCRIPT_URL}
+          strategy="lazyOnload"
+          crossOrigin="anonymous"
+        />
+
         {/* ElevenLabs AI Voice Assistant Widget */}
         <elevenlabs-convai
           agent-id={ELEVENLABS_AGENT_ID}

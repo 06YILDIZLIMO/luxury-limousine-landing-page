@@ -24,6 +24,16 @@ const nextConfig = {
   },
   async headers() {
     return [
+      // Cache Next.js static chunks for 1 year
+      {
+        source: '/_next/static/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
       // Cache static assets (images, fonts) for 1 year
       {
         source: '/(.*)\\.(webp|png|jpg|jpeg|svg|ico|woff|woff2)',
