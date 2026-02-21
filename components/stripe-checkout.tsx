@@ -5,8 +5,9 @@ import { loadStripe } from '@stripe/stripe-js'
 import { Elements, EmbeddedCheckoutProvider, EmbeddedCheckout } from '@stripe/react-stripe-js'
 import { Lock, CreditCard } from 'lucide-react'
 
-// Initialize Stripe with publishable key
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || '')
+// Initialize Stripe with publishable key - only load if key exists
+const stripeKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
+const stripePromise = stripeKey ? loadStripe(stripeKey) : null
 
 interface CheckoutFormProps {
   clientSecret: string

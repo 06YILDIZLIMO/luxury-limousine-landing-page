@@ -8,7 +8,7 @@ declare global {
   }
 }
 
-export const FB_PIXEL_ID = process.env.NEXT_PUBLIC_FACEBOOK_PIXEL_ID
+export const FB_PIXEL_ID = process.env.NEXT_PUBLIC_FACEBOOK_PIXEL_ID || '1523730565356174'
 
 // Initialize Facebook Pixel
 export const initFacebookPixel = () => {
