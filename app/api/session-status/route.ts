@@ -1,12 +1,25 @@
 import { NextResponse } from 'next/server'
 import Stripe from 'stripe'
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
-  apiVersion: '2024-06-20',
-})
+let stripeClient: Stripe | null = null
+
+const getStripeClient = () => {
+  const apiKey = process.env.STRIPE_SECRET_KEY
+  if (!apiKey) {
+    throw new Error('STRIPE_SECRET_KEY not configured')
+  }
+  if (!stripeClient) {
+    stripeClient = new Stripe(apiKey, {
+      apiVersion: '2024-06-20',
+    })
+  }
+  return stripeClient
+}
 
 export async function GET(request: Request) {
   try {
+    const stripe = getStripeClient()
+
     const { searchParams } = new URL(request.url)
     const sessionId = searchParams.get('session_id')
 
@@ -28,6 +41,14 @@ export async function GET(request: Request) {
     })
   } catch (error) {
     console.error('Error retrieving checkout session:', error)
+
+    if (error instanceof Error && error.message === 'STRIPE_SECRET_KEY not configured') {
+      return NextResponse.json(
+        { error: 'Payment is not configured (missing STRIPE_SECRET_KEY).' },
+        { status: 503 }
+      )
+    }
+
     return NextResponse.json(
       { error: 'Error retrieving checkout session' },
       { status: 500 }

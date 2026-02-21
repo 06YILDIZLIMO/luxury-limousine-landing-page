@@ -3,9 +3,20 @@ import Stripe from 'stripe'
 import twilio from 'twilio'
 import { ConversionEvents, sendConversionEvent, getClientIp, getUserAgent } from '@/lib/facebook-conversions-api'
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
-  apiVersion: '2024-06-20',
-})
+let stripeClient: Stripe | null = null
+
+const getStripeClient = () => {
+  const apiKey = process.env.STRIPE_SECRET_KEY
+  if (!apiKey) {
+    throw new Error('STRIPE_SECRET_KEY not configured')
+  }
+  if (!stripeClient) {
+    stripeClient = new Stripe(apiKey, {
+      apiVersion: '2024-06-20',
+    })
+  }
+  return stripeClient
+}
 
 // Lazy initialization of Twilio client to avoid build-time errors
 const getTwilioClient = () => {
@@ -19,6 +30,8 @@ const getTwilioClient = () => {
 
 export async function POST(request: Request) {
   try {
+    const stripe = getStripeClient()
+
     const body = await request.json()
     const { service, amount, customerName, customerEmail, customerPhone, pickupLocation, dropoffLocation, date, time, vehicleType, eventId } = body
 
@@ -121,10 +134,26 @@ export async function POST(request: Request) {
     })
   } catch (error) {
     console.error('Error creating checkout session:', error)
+
+    if (error instanceof Error && error.message === 'STRIPE_SECRET_KEY not configured') {
+      return NextResponse.json(
+        { error: 'Payment is not configured (missing STRIPE_SECRET_KEY).' },
+        { status: 503 }
+      )
+    }
+
+    if (error instanceof Error && error.message === 'Twilio credentials not configured') {
+      // Checkout can still work without WhatsApp, but if it throws here,
+      // treat it as a temporary service issue.
+      return NextResponse.json(
+        { error: 'Messaging is not configured (missing Twilio credentials).' },
+        { status: 503 }
+      )
+    }
+
     return NextResponse.json(
       { error: 'Error creating checkout session' },
       { status: 500 }
     )
   }
 }
-

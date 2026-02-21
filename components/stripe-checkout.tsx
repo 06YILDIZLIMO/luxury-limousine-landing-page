@@ -16,7 +16,18 @@ interface CheckoutFormProps {
 }
 
 export function StripeCheckoutForm({ clientSecret, onSuccess, onCancel }: CheckoutFormProps) {
-  const [loading, setLoading] = useState(false)
+  void onSuccess
+  void onCancel
+
+  if (!stripePromise) {
+    return (
+      <div className="bg-card border border-gold/30 rounded-xl p-6">
+        <p className="text-foreground/80">
+          Payments are currently unavailable.
+        </p>
+      </div>
+    )
+  }
 
   const options = {
     clientSecret,

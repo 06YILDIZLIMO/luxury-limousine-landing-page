@@ -1,8 +1,17 @@
 import OpenAI from 'openai';
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+let openaiClient: OpenAI | null = null;
+
+function getOpenAIClient(): OpenAI {
+  const apiKey = process.env.OPENAI_API_KEY;
+  if (!apiKey) {
+    throw new Error('OPENAI_API_KEY not configured');
+  }
+  if (!openaiClient) {
+    openaiClient = new OpenAI({ apiKey });
+  }
+  return openaiClient;
+}
 
 // Vehicle pricing database - FINAL STRATEGIC PRICING (Competitive vs Uber Black)
 const PRICING = {
@@ -184,6 +193,10 @@ Response: Conversational, under 80 words, natural for voice conversation.`;
 
 export async function getAIResponse(conversationHistory: Array<{role: string; content: string}>): Promise<string> {
   try {
+    if (!process.env.OPENAI_API_KEY) {
+      return "AI assistant is not configured. Please call us directly at +1 (709) 300-9006.";
+    }
+
     // Convert conversation history to proper format
     const messages: Array<{role: 'system' | 'user' | 'assistant'; content: string}> = [
       { role: 'system', content: SYSTEM_PROMPT },
@@ -192,6 +205,8 @@ export async function getAIResponse(conversationHistory: Array<{role: string; co
         content: h.content
       })),
     ];
+
+    const openai = getOpenAIClient();
 
     const completion = await openai.chat.completions.create({
       model: 'gpt-4o-mini',
@@ -206,4 +221,3 @@ export async function getAIResponse(conversationHistory: Array<{role: string; co
     return "I'm having trouble connecting to our system. Please call us directly at +1 (709) 300-9006.";
   }
 }
-

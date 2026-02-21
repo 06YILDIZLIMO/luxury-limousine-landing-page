@@ -4,6 +4,16 @@ import { updateAgent, LIMOUSINE_SYSTEM_PROMPT, AGENT_ID } from '@/lib/elevenlabs
 // POST /api/elevenlabs/agent - Update the ElevenLabs agent with limousine service prompt
 export async function POST(request: NextRequest) {
   try {
+    if (!process.env.ELEVENLABS_API_KEY) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: 'ElevenLabs is not configured (missing ELEVENLABS_API_KEY).',
+        },
+        { status: 503 }
+      );
+    }
+
     const body = await request.json();
     const { prompt, name, modelId } = body;
 
@@ -29,6 +39,13 @@ export async function POST(request: NextRequest) {
     });
   } catch (error) {
     console.error("Error updating ElevenLabs agent:", error);
+
+    if (error instanceof Error && error.message === 'ELEVENLABS_API_KEY not configured') {
+      return NextResponse.json(
+        { success: false, error: 'ElevenLabs is not configured (missing ELEVENLABS_API_KEY).' },
+        { status: 503 }
+      );
+    }
     
     return NextResponse.json(
       {
@@ -43,6 +60,16 @@ export async function POST(request: NextRequest) {
 // GET /api/elevenlabs/agent - Get current agent details
 export async function GET() {
   try {
+    if (!process.env.ELEVENLABS_API_KEY) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: 'ElevenLabs is not configured (missing ELEVENLABS_API_KEY).',
+        },
+        { status: 503 }
+      );
+    }
+
     const { getAgent } = await import('@/lib/elevenlabs');
     const agent = await getAgent(AGENT_ID);
 
@@ -58,6 +85,13 @@ export async function GET() {
     });
   } catch (error) {
     console.error("Error fetching ElevenLabs agent:", error);
+
+    if (error instanceof Error && error.message === 'ELEVENLABS_API_KEY not configured') {
+      return NextResponse.json(
+        { success: false, error: 'ElevenLabs is not configured (missing ELEVENLABS_API_KEY).' },
+        { status: 503 }
+      );
+    }
     
     return NextResponse.json(
       {
