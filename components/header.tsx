@@ -49,11 +49,15 @@ export function Header() {
     }
   }
 
-  const handleNavigation = (path: string, sectionId?: string) => {
+  const handleNavigation = (
+    event: React.MouseEvent<HTMLAnchorElement>,
+    sectionId?: string
+  ) => {
     setIsMobileMenuOpen(false)
     
     // If we're on homepage and there's a section ID, scroll to it
     if (pathname === "/" && sectionId) {
+      event.preventDefault()
       scrollToSection(sectionId)
     }
   }
@@ -83,28 +87,28 @@ export function Header() {
             <Link 
               href="/fleet"
               className="text-sm text-foreground/80 hover:text-gold transition-colors"
-              onClick={() => handleNavigation("/fleet", "fleet")}
+              onClick={(event) => handleNavigation(event, "fleet")}
             >
               {'Fleet'}
             </Link>
             <Link 
               href="/service"
               className="text-sm text-foreground/80 hover:text-gold transition-colors"
-              onClick={() => handleNavigation("/service", "services")}
+              onClick={(event) => handleNavigation(event, "services")}
             >
               {'Services'}
             </Link>
             <Link 
               href="/booking"
               className="text-sm text-foreground/80 hover:text-gold transition-colors"
-              onClick={() => handleNavigation("/booking", "booking")}
+              onClick={(event) => handleNavigation(event, "booking")}
             >
               {'Booking'}
             </Link>
             <Link 
               href="/contact"
               className="text-sm text-foreground/80 hover:text-gold transition-colors"
-              onClick={() => handleNavigation("/contact", "contact")}
+              onClick={(event) => handleNavigation(event, "contact")}
             >
               {'Contact'}
             </Link>
@@ -142,28 +146,28 @@ export function Header() {
               <Link 
                 href="/fleet"
                 className="text-left text-foreground/80 hover:text-gold transition-colors py-2"
-                onClick={() => handleNavigation("/fleet", "fleet")}
+                onClick={(event) => handleNavigation(event, "fleet")}
               >
                 {'Fleet'}
               </Link>
               <Link 
                 href="/service"
                 className="text-left text-foreground/80 hover:text-gold transition-colors py-2"
-                onClick={() => handleNavigation("/service", "services")}
+                onClick={(event) => handleNavigation(event, "services")}
               >
                 {'Services'}
               </Link>
               <Link 
                 href="/booking"
                 className="text-left text-foreground/80 hover:text-gold transition-colors py-2"
-                onClick={() => handleNavigation("/booking", "booking")}
+                onClick={(event) => handleNavigation(event, "booking")}
               >
                 {'Booking'}
               </Link>
               <Link 
                 href="/contact"
                 className="text-left text-foreground/80 hover:text-gold transition-colors py-2"
-                onClick={() => handleNavigation("/contact", "contact")}
+                onClick={(event) => handleNavigation(event, "contact")}
               >
                 {'Contact'}
               </Link>
