@@ -19,3 +19,19 @@
 ## Deployed ✅
 - Commit: 2886aa2
 - All pages live: /, /fleet, /service, /contact, /booking
+
+## Conversion Fixes ✅ (Arama almak için)
+- [x] Hero: "Call Now: (709) 300-9006" butonu eklendi (tel: link)
+- [x] Hero: "Book Online" butonu /booking'e bağlandı (eskiden çalışmıyordu)
+- [x] Hero: "📞 Available 24/7" metni eklendi
+- [x] Yeni: FloatingCallButton component - tüm sayfalarda sabit "Ara" butonu
+  - Mobil: ekranın altında ortalanmış
+  - Desktop: sağ alt köşe
+- [x] layout.tsx: FloatingCallButton global olarak eklendi
+- Commit: 7235232 (force-pushed)
+
+## ⚠️ HALA YAPILMASI GEREKENLER (Trafik için)
+- [ ] Google My Business kur → yerel aramalarda görün (ÜCRETSİZ)
+- [ ] Google Ads başlat → anında trafik (ücretli)
+- [ ] Airport Transfer landing page (/airport-transfer)
+- [ ] Wedding Limo landing page (/wedding-limo)

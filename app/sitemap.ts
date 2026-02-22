@@ -47,6 +47,27 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.85,
     },
+    // Airport Transfer Landing Page - High Priority (SEO)
+    {
+      url: `${baseUrl}/airport-transfer`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    // Wedding Limo Landing Page - High Priority (SEO)
+    {
+      url: `${baseUrl}/wedding-limo`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    // Corporate Limo Landing Page - High Priority (SEO)
+    {
+      url: `${baseUrl}/corporate-limo`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
     // Contact Page
     {
       url: `${baseUrl}/contact`,
