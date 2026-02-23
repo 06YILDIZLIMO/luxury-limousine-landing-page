@@ -276,6 +276,29 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en">
       <head>
+        {/* CRITICAL CSS INLINE - Prevents render-blocking, saves ~180ms LCP */}
+        <style dangerouslySetInnerHTML={{ __html: `
+          :root {
+            --background: oklch(0.08 0 0);
+            --foreground: oklch(0.98 0 0);
+            --gold: oklch(0.70 0.12 85);
+          }
+          *,::before,::after { box-sizing: border-box; margin: 0; padding: 0; }
+          html { -webkit-text-size-adjust: 100%; }
+          body {
+            background-color: oklch(0.08 0 0);
+            color: oklch(0.98 0 0);
+            font-family: var(--font-inter, 'Inter', system-ui, -apple-system, sans-serif);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            min-height: 100vh;
+          }
+          header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 50;
+          }
+        ` }} />
         {/* JSON-LD: Local Business - Critical for Google indexing & GMB */}
         <script
           type="application/ld+json"
