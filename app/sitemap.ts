@@ -40,7 +40,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         'https://06yildizlimo.com/VolvoXc90.webp',
       ],
     },
-    // Service Page (FIXED: was /services, now /service)
+    // Service Page
     {
       url: `${baseUrl}/service`,
       lastModified: currentDate,
@@ -98,4 +98,3 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ]
 }
-
