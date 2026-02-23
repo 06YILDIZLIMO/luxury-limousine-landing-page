@@ -1,8 +1,4 @@
-forced reflow occurs when JavaScript queries geometric properties (such as offsetWidth) after styles have been invalidated by a change to the DOM state. This can result in poor performance. Learn more about forced reflows and possible mitigations.Unscored
-Source
-Total reflow time
-[unattributed]
-32 msimport React from "react"
+import React from "react"
 import type { Metadata } from 'next'
 import { Playfair_Display, Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
@@ -85,9 +81,7 @@ export const metadata: Metadata = {
   creator: '06YILDIZ LIMO',
   publisher: '06YILDIZ LIMO',
   metadataBase: new URL('https://06yildizlimo.com'),
-  alternates: {
-    canonical: 'https://06yildizlimo.com',
-  },
+
   openGraph: {
     type: 'website',
     locale: 'en_CA',

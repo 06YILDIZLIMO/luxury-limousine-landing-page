@@ -1,5 +1,4 @@
 import { MetadataRoute } from 'next'
-
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://06yildizlimo.com'
   const currentDate = new Date()
