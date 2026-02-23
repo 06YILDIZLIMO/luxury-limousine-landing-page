@@ -1,4 +1,8 @@
-import React from "react"
+forced reflow occurs when JavaScript queries geometric properties (such as offsetWidth) after styles have been invalidated by a change to the DOM state. This can result in poor performance. Learn more about forced reflows and possible mitigations.Unscored
+Source
+Total reflow time
+[unattributed]
+32 msimport React from "react"
 import type { Metadata } from 'next'
 import { Playfair_Display, Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
@@ -276,8 +280,45 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en">
       <head>
-        {/* CRITICAL CSS - Prevents flash of white & render-blocking (saves ~140ms LCP) */}
-        <style dangerouslySetInnerHTML={{ __html: ":root{--background:oklch(8% 0 0);--foreground:oklch(98% 0 0);--gold:oklch(70% .12 85)}body{background-color:oklch(8% 0 0);color:oklch(98% 0 0)}header{position:fixed;top:0;left:0;right:0;z-index:50}" }} />
+        {/* CRITICAL CSS - Prevents flash of white & FOUC. Covers full above-the-fold hero. */}
+        <style dangerouslySetInnerHTML={{ __html: `
+:root{--background:oklch(8% 0 0);--foreground:oklch(98% 0 0);--gold:oklch(70% .12 85);--card:oklch(12% 0 0);--border:oklch(20% 0 0)}
+*,::before,::after{box-sizing:border-box}
+html{line-height:1.5;-webkit-text-size-adjust:100%}
+body{margin:0;background-color:oklch(8% 0 0);color:oklch(98% 0 0);font-family:var(--font-inter,ui-sans-serif,system-ui,sans-serif);min-height:100vh}
+header{position:fixed;top:0;left:0;right:0;z-index:50;transition:all .3s}
+.min-h-screen{min-height:100vh}
+.bg-background{background-color:oklch(8% 0 0)}
+.relative{position:relative}
+.flex{display:flex}
+.items-center{align-items:center}
+.justify-center{justify-content:center}
+.justify-between{justify-content:space-between}
+.text-center{text-align:center}
+.font-serif{font-family:var(--font-playfair,Georgia,serif)}
+.font-black{font-weight:900}
+.font-bold{font-weight:700}
+.text-white{color:#fff}
+.text-gold{color:oklch(70% .12 85)}
+.container{width:100%;margin-left:auto;margin-right:auto;padding-left:1rem;padding-right:1rem}
+.px-4{padding-left:1rem;padding-right:1rem}
+.py-24{padding-top:6rem;padding-bottom:6rem}
+.pt-20{padding-top:5rem}
+.h-20{height:5rem}
+.w-full{width:100%}
+.overflow-hidden{overflow:hidden}
+.hidden{display:none}
+.gap-8{gap:2rem}
+.z-50{z-index:50}
+.fixed{position:fixed}
+.top-0{top:0}
+.left-0{left:0}
+.right-0{right:0}
+.inset-0{inset:0}
+.absolute{position:absolute}
+.opacity-0{opacity:0}
+.transition-all{transition:all .15s cubic-bezier(.4,0,.2,1)}
+        `.replace(/\n\s*/g, '') }} />
         {/* JSON-LD: Local Business - Critical for Google indexing & GMB */}
         <script
           type="application/ld+json"

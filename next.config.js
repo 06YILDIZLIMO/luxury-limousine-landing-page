@@ -4,7 +4,11 @@ const nextConfig = {
   compress: true,
   poweredByHeader: false,
   experimental: {
-    optimizeCss: true,
+    optimizeCss: {
+      preload: 'swap',
+      pruneSource: false,
+      logLevel: 'warn',
+    },
   },
   images: {
     formats: ['image/avif', 'image/webp'],
