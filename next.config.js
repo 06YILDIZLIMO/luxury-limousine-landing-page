@@ -3,6 +3,9 @@ const nextConfig = {
   reactStrictMode: true,
   compress: true,
   poweredByHeader: false,
+  experimental: {
+    optimizeCss: true,
+  },
   images: {
     formats: ['image/avif', 'image/webp'],
     domains: ['threebestrated.ca'],
