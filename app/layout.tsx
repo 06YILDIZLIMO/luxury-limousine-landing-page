@@ -276,6 +276,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en">
       <head>
+        {/* CRITICAL CSS - Prevents flash of white & render-blocking (saves ~140ms LCP) */}
+        <style dangerouslySetInnerHTML={{ __html: ":root{--background:oklch(8% 0 0);--foreground:oklch(98% 0 0);--gold:oklch(70% .12 85)}body{background-color:oklch(8% 0 0);color:oklch(98% 0 0)}header{position:fixed;top:0;left:0;right:0;z-index:50}" }} />
         {/* JSON-LD: Local Business - Critical for Google indexing & GMB */}
         <script
           type="application/ld+json"
