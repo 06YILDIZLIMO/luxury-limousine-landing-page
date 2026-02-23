@@ -1,13 +1,26 @@
 "use client"
 
-import { useState } from 'react'
-import { loadStripe } from '@stripe/stripe-js'
+import { useState, useEffect } from 'react'
+import type { Stripe } from '@stripe/stripe-js'
 import { Elements, EmbeddedCheckoutProvider, EmbeddedCheckout } from '@stripe/react-stripe-js'
 import { Lock, CreditCard } from 'lucide-react'
 
-// Initialize Stripe with publishable key - only load if key exists
-const stripeKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
-const stripePromise = stripeKey ? loadStripe(stripeKey) : null
+// Lazy singleton — Stripe JS is NOT loaded at module level.
+// It is only fetched when this component first mounts (i.e. when the user
+// reaches the payment step), saving ~228 KiB on initial page load.
+let stripePromise: Promise<Stripe | null> | null = null
+
+function getStripePromise() {
+  if (!stripePromise) {
+    const stripeKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
+    if (stripeKey) {
+      stripePromise = import('@stripe/stripe-js').then(({ loadStripe }) =>
+        loadStripe(stripeKey)
+      )
+    }
+  }
+  return stripePromise
+}
 
 interface CheckoutFormProps {
   clientSecret: string
@@ -17,6 +30,12 @@ interface CheckoutFormProps {
 
 export function StripeCheckoutForm({ clientSecret, onSuccess, onCancel }: CheckoutFormProps) {
   const [loading, setLoading] = useState(false)
+  // Initialise Stripe lazily — only when this component mounts
+  const [stripe, setStripe] = useState<Promise<Stripe | null> | null>(null)
+
+  useEffect(() => {
+    setStripe(getStripePromise())
+  }, [])
 
   const options = {
     clientSecret,
@@ -46,8 +65,8 @@ export function StripeCheckoutForm({ clientSecret, onSuccess, onCancel }: Checko
         </div>
       </div>
 
-      <Elements stripe={stripePromise} options={options}>
-        <EmbeddedCheckoutProvider stripe={stripePromise} options={options}>
+      <Elements stripe={stripe} options={options}>
+        <EmbeddedCheckoutProvider stripe={stripe} options={options}>
           <EmbeddedCheckout />
         </EmbeddedCheckoutProvider>
       </Elements>

@@ -19,15 +19,17 @@ export function Hero() {
           <span className="text-sm font-semibold tracking-wider uppercase">Peterborough & Ontario's Finest</span>
         </div>
 
-        {/* LOGO BURADA (Boyutu h-16 ve md:h-24 yaptık, çok daha kibar oldu) */}
+        {/* LOGO - priority + sizes for fast LCP on mobile */}
         <div className="flex justify-center mb-6">
           <Image
-            src="/yildizlimo.webp"
-            alt="06YILDIZ LIMO Logo"
+            src="/yildizlimo.png"
+            alt="06YILDIZ LIMO - Luxury Limousine Service Peterborough"
             width={384}
             height={148}
             className="h-16 md:h-24 w-auto"
             priority
+            fetchPriority="high"
+            sizes="(max-width: 768px) 200px, 384px"
           />
         </div>
 
