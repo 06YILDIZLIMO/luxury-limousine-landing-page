@@ -274,7 +274,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en">
       <head>
         {/* Preload LCP image — fetched before HTML body is parsed */}
-        <link rel="preload" href="/yildizlimo.png" as="image" type="image/png" fetchPriority="high" />
+        <link rel="preload" href="/yildizlimo.webp" as="image" type="image/webp" fetchPriority="high" />
         {/* CRITICAL CSS - Prevents flash of white & FOUC. Covers full above-the-fold hero. */}
         <style dangerouslySetInnerHTML={{ __html: `
 :root{--background:oklch(8% 0 0);--foreground:oklch(98% 0 0);--gold:oklch(70% .12 85);--card:oklch(12% 0 0);--border:oklch(20% 0 0)}
