@@ -1,9 +1,9 @@
-import { Header } from "@/components/header"
+                                                import { Header } from "@/components/header"
 import { Contact } from "@/components/contact"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { Phone, Mail, MapPin, Clock, MessageCircle } from "lucide-react"
-import type { Metadata } from "next"
+import type { Metadata } from "next"                 
 
 export const metadata: Metadata = {
   title: "Contact 06YILDIZ LIMO Peterborough | Call (709) 300-9006 | 24/7 Limo Service",
