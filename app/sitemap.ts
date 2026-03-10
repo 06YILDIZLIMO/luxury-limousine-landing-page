@@ -74,6 +74,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.8,
     },
+    // Live Flights Page
+    {
+      url: `${baseUrl}/live-flights`,
+      lastModified: currentDate,
+      changeFrequency: 'hourly',
+      priority: 0.7,
+    },
     // Cancellation Policy
     {
       url: `${baseUrl}/cancellation-policy`,

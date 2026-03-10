@@ -108,6 +108,13 @@ export function Header() {
             >
               {'Contact'}
             </Link>
+            <Link 
+              href="/live-flights"
+              className="text-sm text-foreground/80 hover:text-gold transition-colors"
+              onClick={() => handleNavigation("/live-flights")}
+            >
+              {'Live Flights'}
+            </Link>
           </nav>
 
           {/* Contact Info & CTA - Right Side */}
@@ -166,6 +173,13 @@ export function Header() {
                 onClick={() => handleNavigation("/contact", "contact")}
               >
                 {'Contact'}
+              </Link>
+              <Link 
+                href="/live-flights"
+                className="text-left text-foreground/80 hover:text-gold transition-colors py-2"
+                onClick={() => handleNavigation("/live-flights")}
+              >
+                {'Live Flights'}
               </Link>
               <a href="tel:+17093009006" className="flex items-center gap-2 text-gold py-2">
                 <Phone className="w-4 h-4" />
