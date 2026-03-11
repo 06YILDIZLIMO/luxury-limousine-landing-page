@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { ArrowRight, Star, Phone } from "lucide-react"
+import { ArrowRight, Star, Phone, Plane } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 
@@ -14,9 +14,21 @@ export function Hero() {
       </div>
 
       <div className="relative z-10 container mx-auto px-4 text-center">
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#BF953F]/20 border border-[#BF953F]/40 text-[#BF953F] mb-8 backdrop-blur-md">
-          <Star className="w-4 h-4 fill-current" />
-          <span className="text-sm font-semibold tracking-wider uppercase">Peterborough & Ontario's Finest</span>
+        <div className="relative mb-8 flex items-center justify-center">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#BF953F]/20 border border-[#BF953F]/40 text-[#BF953F] backdrop-blur-md">
+            <Star className="w-4 h-4 fill-current" />
+            <span className="text-sm font-semibold tracking-wider uppercase">Peterborough & Ontario's Finest</span>
+          </div>
+
+          {/* Desktop right-side quick action (user requested empty right area) */}
+          <Link
+            href="/live-flights"
+            className="hidden lg:inline-flex absolute right-0 items-center gap-2 px-4 py-2 rounded-full border border-[#BF953F]/60 bg-black/50 text-[#BF953F] hover:bg-[#BF953F]/15 hover:text-[#F5D37A] transition-colors font-semibold text-sm"
+            aria-label="Check YYZ Live Flights"
+          >
+            <Plane className="w-4 h-4" />
+            YYZ Live Flights
+          </Link>
         </div>
 
         {/* LOGO - priority + sizes for fast LCP on mobile */}
@@ -60,9 +72,23 @@ export function Hero() {
         </div>
 
         {/* Phone number text - extra visibility */}
-        <p className="text-[#BF953F] text-sm font-semibold tracking-wider mb-16">
+        <p className="text-[#BF953F] text-sm font-semibold tracking-wider mb-6">
           📞 Available 24/7 · Free Quote in 30 Minutes
         </p>
+
+        {/* Mobile/Tablet Live Flights button */}
+        <div className="lg:hidden mb-16">
+          <Link href="/live-flights">
+            <Button
+              size="sm"
+              variant="outline"
+              className="border-[#BF953F] text-[#BF953F] hover:bg-[#BF953F]/10 font-semibold rounded-full px-6"
+            >
+              <Plane className="mr-2 w-4 h-4" />
+              Check YYZ Live Flights
+            </Button>
+          </Link>
+        </div>
       </div>
     </section>
   )
