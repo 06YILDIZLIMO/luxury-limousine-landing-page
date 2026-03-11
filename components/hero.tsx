@@ -34,7 +34,7 @@ export function Hero() {
         {/* LOGO - priority + sizes for fast LCP on mobile */}
         <div className="flex justify-center mb-6">
           <Image
-            src="/yildizlimo.webp"
+            src="/logo.jpg"
             alt="06YILDIZ LIMO - Luxury Limousine Service Peterborough"
             width={384}
             height={148}

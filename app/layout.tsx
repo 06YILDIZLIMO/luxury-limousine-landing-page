@@ -112,10 +112,10 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: 'any' },
-      { url: '/yildizlimo.webp', sizes: '512x512', type: 'image/webp' },
+      { url: '/logo.jpg', sizes: '512x512', type: 'image/jpeg' },
     ],
     apple: [
-      { url: '/yildizlimo.webp', sizes: '180x180', type: 'image/webp' },
+      { url: '/logo.jpg', sizes: '180x180', type: 'image/jpeg' },
     ],
     shortcut: '/favicon.ico',
   },
@@ -139,7 +139,7 @@ const localBusinessSchema = {
   "priceRange": "$$",
   "currenciesAccepted": "CAD",
   "paymentAccepted": "Cash, Credit Card, Debit Card",
-  "logo": "https://06yildizlimo.com/yildizlimo.webp",
+  "logo": "https://06yildizlimo.com/logo.jpg",
   "image": "https://06yildizlimo.com/og-image.png",
   "address": {
     "@type": "PostalAddress",
@@ -274,7 +274,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en">
       <head>
         {/* Preload LCP image — fetched before HTML body is parsed */}
-        <link rel="preload" href="/yildizlimo.webp" as="image" type="image/webp" fetchPriority="high" />
+        <link rel="preload" href="/logo.jpg" as="image" type="image/jpeg" fetchPriority="high" />
         {/* CRITICAL CSS - Prevents flash of white & FOUC. Covers full above-the-fold hero. */}
         <style dangerouslySetInnerHTML={{ __html: `
 :root{--background:oklch(8% 0 0);--foreground:oklch(98% 0 0);--gold:oklch(70% .12 85);--card:oklch(12% 0 0);--border:oklch(20% 0 0)}

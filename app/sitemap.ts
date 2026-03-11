@@ -12,7 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
       images: [
         'https://06yildizlimo.com/og-image.png',
-        'https://06yildizlimo.com/yildizlimo.webp',
+        'https://06yildizlimo.com/logo.jpg',
       ],
     },
     // Booking Page - High Priority (conversion page)
