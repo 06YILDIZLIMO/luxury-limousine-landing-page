@@ -73,7 +73,13 @@ export function LiveFlightsClient() {
       const data = await response.json()
       if (data.error) throw new Error(data.error.message || "API error")
 
-      const rows = Array.isArray(data.data) ? data.data : []
+      const rawRows = Array.isArray(data.data) ? data.data : []
+      const rows = rawRows.filter((flight: FlightItem) => {
+        const arr = (flight?.arrival?.iata || "").toUpperCase()
+        const dep = (flight?.departure?.iata || "").toUpperCase()
+        return type === "arrival" ? arr === AIRPORT_IATA : dep === AIRPORT_IATA
+      })
+
       setFlights(rows)
 
       if (!rows.length) {
@@ -165,6 +171,7 @@ export function LiveFlightsClient() {
                         <th className="py-3 pr-4 font-semibold">Airline</th>
                         <th className="py-3 pr-4 font-semibold">City</th>
                         <th className="py-3 pr-4 font-semibold">Estimated Time</th>
+                        <th className="py-3 pr-4 font-semibold">YYZ</th>
                         <th className="py-3 pr-4 font-semibold">Status</th>
                       </tr>
                     </thead>
@@ -183,6 +190,10 @@ export function LiveFlightsClient() {
                             : formatTime(flight?.departure?.estimated || flight?.departure?.scheduled || flight?.departure?.actual)
 
                         const status = normalizeStatus(flight?.flight_status)
+                        const yyzSide =
+                          currentType === "arrival"
+                            ? (flight?.arrival?.iata || "-").toUpperCase()
+                            : (flight?.departure?.iata || "-").toUpperCase()
 
                         return (
                           <tr key={`${flightNo}-${idx}`} className="hover:bg-background/50 transition">
@@ -190,6 +201,7 @@ export function LiveFlightsClient() {
                             <td className="py-3 pr-4 text-foreground">{airline}</td>
                             <td className="py-3 pr-4 text-foreground/80">{city}</td>
                             <td className="py-3 pr-4 text-foreground/80">{estTime}</td>
+                            <td className="py-3 pr-4 text-foreground/80 font-semibold">{yyzSide}</td>
                             <td className="py-3 pr-4">
                               <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold ${statusBadgeClass(status)}`}>
                                 {status}
