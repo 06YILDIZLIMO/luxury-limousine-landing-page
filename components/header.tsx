@@ -79,7 +79,7 @@ export function Header() {
           </Link>
 
           {/* Desktop Navigation - Centered */}
-          <nav role="navigation" aria-label="Main navigation" className="hidden lg:flex items-center gap-8 absolute left-1/2 transform -translate-x-1/2">
+          <nav role="navigation" aria-label="Main navigation" className="hidden md:flex items-center gap-6 lg:gap-8 absolute left-1/2 transform -translate-x-1/2">
             <Link 
               href="/fleet"
               className="text-sm text-foreground/80 hover:text-gold transition-colors"
@@ -118,7 +118,7 @@ export function Header() {
           </nav>
 
           {/* Contact Info & CTA - Right Side */}
-          <div className="hidden lg:flex items-center gap-4">
+          <div className="hidden xl:flex items-center gap-4">
             <a href="tel:+17093009006" className="flex items-center gap-2 text-sm text-foreground/80 hover:text-gold transition-colors">
               <Phone className="w-4 h-4" />
               <span>{'+1 (709) 300-9006'}</span>
@@ -135,7 +135,7 @@ export function Header() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-2 text-foreground hover:text-gold transition-colors"
+            className="md:hidden p-2 text-foreground hover:text-gold transition-colors"
             aria-label="Toggle mobile menu"
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -144,7 +144,7 @@ export function Header() {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden py-6 border-t border-border">
+          <div className="md:hidden py-6 border-t border-border">
             <nav role="navigation" aria-label="Mobile navigation" className="flex flex-col gap-4">
               <Link 
                 href="/fleet"
