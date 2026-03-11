@@ -63,6 +63,14 @@ export function Footer() {
                   {'Contact'}
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/live-flights"
+                  className="text-sm text-foreground/70 hover:text-gold transition-colors"
+                >
+                  {'Live Flights'}
+                </Link>
+              </li>
               </ul>
             </nav>
           </div>
