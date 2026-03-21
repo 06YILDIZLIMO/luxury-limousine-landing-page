@@ -1,5 +1,5 @@
-- [ ] Create branch blackboxai/logo-png-fix
-- [ ] Update header and hero logo src from .jpg to .png
-- [ ] Commit changes
-- [ ] Push branch
+- [x] Create branch blackboxai/logo-png-fix
+- [x] Update header and hero logo src from .jpg to .png
+- [x] Commit changes
+- [x] Push branch
 - [ ] Merge into main and push main
