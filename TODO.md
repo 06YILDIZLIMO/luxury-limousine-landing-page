@@ -2,4 +2,4 @@
 - [x] Update header and hero logo src from .jpg to .png
 - [x] Commit changes
 - [x] Push branch
-- [ ] Merge into main and push main
+- [x] Merge into main and push main
