@@ -81,32 +81,32 @@ export function Footer() {
             <nav role="navigation" aria-label="Services">
               <ul className="space-y-2 text-sm text-foreground/70">
               <li>
-                <Link href="/service" className="hover:text-gold transition-colors">
+                <Link href="/airport-transfers" className="hover:text-gold transition-colors">
                   {'Airport Transfers'}
                 </Link>
               </li>
               <li>
-                <Link href="/service" className="hover:text-gold transition-colors">
+                <Link href="/corporate-events" className="hover:text-gold transition-colors">
                   {'Corporate Events'}
                 </Link>
               </li>
               <li>
-                <Link href="/service" className="hover:text-gold transition-colors">
+                <Link href="/weddings" className="hover:text-gold transition-colors">
                   {'Wedding Services'}
                 </Link>
               </li>
               <li>
-                <Link href="/service" className="hover:text-gold transition-colors">
+                <Link href="/special-occasions" className="hover:text-gold transition-colors">
                   {'Special Occasions'}
                 </Link>
               </li>
               <li>
-                <Link href="/service" className="hover:text-gold transition-colors">
+                <Link href="/city-tours" className="hover:text-gold transition-colors">
                   {'City Tours'}
                 </Link>
               </li>
               <li>
-                <Link href="/service" className="hover:text-gold transition-colors">
+                <Link href="/point-to-point" className="hover:text-gold transition-colors">
                   {'Point-to-Point'}
                 </Link>
               </li>

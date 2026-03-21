@@ -1,3 +1,4 @@
+import Link from "next/link"
 import { Card, CardContent } from "@/components/ui/card"
 import { Plane, Briefcase, Heart, PartyPopper, Building2, MapPin } from "lucide-react"
 import Image from "next/image"
@@ -6,31 +7,37 @@ const services = [
   {
     icon: Plane,
     title: "Airport Transfers",
+    href: "/airport-transfers",
     description: "Reliable and punctual airport transportation with flight tracking and meet-and-greet service. We monitor your flight status and adjust pickup times accordingly. Complimentary waiting time, luggage assistance, and professional service from door to terminal.",
   },
   {
     icon: Briefcase,
     title: "Corporate Events",
+    href: "/corporate-events",
     description: "Professional chauffeur services for business meetings, conferences, and executive travel. Make a lasting impression on your clients and partners with our premium fleet. Confidential, reliable, and punctual service tailored for business professionals.",
   },
   {
     icon: Heart,
     title: "Weddings",
+    href: "/weddings",
     description: "Make your special day unforgettable with our elegant wedding limousine packages. From the bride's exit to transporting the wedding party, we ensure every moment is picture-perfect. Custom decorations and red-carpet service available.",
   },
   {
     icon: PartyPopper,
     title: "Special Occasions",
+    href: "/special-occasions",
     description: "Celebrate birthdays, anniversaries, proms, bachelorette parties, and nights out in style and luxury. Create unforgettable memories with premium transportation for your special moments. VIP treatment guaranteed.",
   },
   {
     icon: Building2,
     title: "City Tours",
+    href: "/city-tours",
     description: "Experience Toronto, Niagara Falls, Muskoka, and Peterborough like never before with our customized guided tours. Professional chauffeurs with extensive local knowledge. Luxury vehicles equipped with comfort amenities for an unforgettable journey.",
   },
   {
     icon: MapPin,
     title: "Point-to-Point",
+    href: "/point-to-point",
     description: "Direct transportation to any destination across Ontario with premium comfort and style. Whether it's a dinner reservation, concert, or personal appointment, arrive in elegance. 24/7 availability for your convenience.",
   },
 ]
@@ -67,15 +74,17 @@ export function Services() {
           {services.map((service, index) => {
             const Icon = service.icon
             return (
-              <Card key={index} className="group bg-card border-border hover:border-gold/50 transition-all duration-300 hover:shadow-lg hover:shadow-gold/10">
-                <CardContent className="p-6">
-                  <div className="w-14 h-14 bg-gold/10 rounded-full flex items-center justify-center mb-4 group-hover:bg-gold group-hover:scale-110 transition-all duration-300">
-                    <Icon className="w-7 h-7 text-gold group-hover:text-background transition-colors" />
-                  </div>
-                  <h3 className="text-xl font-serif font-bold mb-3">{service.title}</h3>
-                  <p className="text-foreground/70 leading-relaxed">{service.description}</p>
-                </CardContent>
-              </Card>
+              <Link key={index} href={service.href} className="block">
+                <Card className="group bg-card border-border hover:border-gold/50 transition-all duration-300 hover:shadow-lg hover:shadow-gold/10">
+                  <CardContent className="p-6">
+                    <div className="w-14 h-14 bg-gold/10 rounded-full flex items-center justify-center mb-4 group-hover:bg-gold group-hover:scale-110 transition-all duration-300">
+                      <Icon className="w-7 h-7 text-gold group-hover:text-background transition-colors" />
+                    </div>
+                    <h3 className="text-xl font-serif font-bold mb-3">{service.title}</h3>
+                    <p className="text-foreground/70 leading-relaxed">{service.description}</p>
+                  </CardContent>
+                </Card>
+              </Link>
             )
           })}
         </div>
