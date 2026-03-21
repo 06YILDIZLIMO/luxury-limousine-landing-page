@@ -34,11 +34,11 @@ export function Hero() {
         {/* LOGO - priority + sizes for fast LCP on mobile */}
         <div className="flex justify-center mb-6">
           <Image
-            src="/logo.jpg"
+            src="/logo-transparent.png"
             alt="06YILDIZ LIMO - Luxury Limousine Service Peterborough"
             width={384}
             height={148}
-            className="h-16 md:h-24 w-auto"
+            className="h-16 md:h-24 w-auto mix-blend-screen"
             priority
             fetchPriority="high"
             sizes="(max-width: 768px) 200px, 384px"
