@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useMemo, useState } from "react"
+import Image from "next/image"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 
@@ -117,6 +118,14 @@ export function LiveFlightsClient() {
               </button>
             </div>
           </header>
+
+          <Image
+            src="/yyz-pearson.jpg"
+            alt="Toronto Pearson Airport"
+            width={1200}
+            height={600}
+            className="w-full rounded-xl shadow-2xl object-cover mb-8"
+          />
 
           <section className="bg-card/80 border border-border rounded-2xl shadow-2xl overflow-hidden">
             <div className="border-b border-border p-2 md:p-3">
