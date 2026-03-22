@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "optimize:images": "node scripts/optimize-images.js"
   },
   "dependencies": {
     "@elevenlabs/elevenlabs-js": "^2.35.0",
@@ -38,6 +39,7 @@
     "critters": "^0.0.23",
     "eslint": "^8.0.0",
     "eslint-config-next": "^15.0.0",
+    "sharp": "^0.33.5",
     "typescript": "^5.0.0"
   },
   "browserslist": [

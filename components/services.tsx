@@ -99,7 +99,11 @@ export function Services() {
                   alt="Luxury limousine fleet"
                   fill
                   className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 50vw"
+                  quality={75}
+                  placeholder="blur"
+                  blurDataURL="data:image/webp;base64,UklGRhYAAABXRUJQVlA4TAoAAAAvAAAAAAfQ//73v/+BiOh/AAA="
+                  loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent to-card lg:to-transparent" />
               </div>

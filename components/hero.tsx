@@ -41,6 +41,9 @@ export function Hero() {
             className="h-16 md:h-24 w-auto mix-blend-screen"
             priority
             fetchPriority="high"
+            quality={75}
+            placeholder="blur"
+            blurDataURL="data:image/webp;base64,UklGRhYAAABXRUJQVlA4TAoAAAAvAAAAAAfQ//73v/+BiOh/AAA="
             sizes="(max-width: 768px) 200px, 384px"
           />
         </div>
